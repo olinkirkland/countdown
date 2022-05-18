@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/olinkirkland.github.io/countdown/static/css/main.e83c0b73.css",
-    "main.js": "/olinkirkland.github.io/countdown/static/js/main.c6e3d21b.js",
-    "index.html": "/olinkirkland.github.io/countdown/index.html",
-    "main.e83c0b73.css.map": "/olinkirkland.github.io/countdown/static/css/main.e83c0b73.css.map",
-    "main.c6e3d21b.js.map": "/olinkirkland.github.io/countdown/static/js/main.c6e3d21b.js.map"
+    "main.css": "/amberti.me/static/css/main.e83c0b73.css",
+    "main.js": "/amberti.me/static/js/main.c6e3d21b.js",
+    "index.html": "/amberti.me/index.html",
+    "main.e83c0b73.css.map": "/amberti.me/static/css/main.e83c0b73.css.map",
+    "main.c6e3d21b.js.map": "/amberti.me/static/js/main.c6e3d21b.js.map"
   },
   "entrypoints": [
     "static/css/main.e83c0b73.css",
