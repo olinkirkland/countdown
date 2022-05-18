@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/amberti.me/static/css/main.e83c0b73.css",
+    "main.css": "/amberti.me/static/css/main.51c35b21.css",
     "main.js": "/amberti.me/static/js/main.c6e3d21b.js",
     "index.html": "/amberti.me/index.html",
-    "main.e83c0b73.css.map": "/amberti.me/static/css/main.e83c0b73.css.map",
+    "main.51c35b21.css.map": "/amberti.me/static/css/main.51c35b21.css.map",
     "main.c6e3d21b.js.map": "/amberti.me/static/js/main.c6e3d21b.js.map"
   },
   "entrypoints": [
-    "static/css/main.e83c0b73.css",
+    "static/css/main.51c35b21.css",
     "static/js/main.c6e3d21b.js"
   ]
 }
