@@ -10,22 +10,25 @@ function Main() {
   const [weeks, setWeeks] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      const _seconds = (targetTime - new Date()) / 1000;
-      const _minutes = _seconds / 60;
-      const _hours = _minutes / 60;
-      const _days = _hours / 24;
-      const _weeks = _days / 7;
-
-      setSeconds(Math.floor(_seconds % 60));
-      setMinutes(Math.floor(_minutes % 60));
-      setHours(Math.floor(_hours % 24));
-      setDays(Math.floor(_days % 7));
-      setWeeks(Math.floor(_weeks));
-    }, 1000);
+    setValues();
+    const interval = setInterval(setValues, 1000);
 
     return () => clearInterval(interval);
   }, []);
+
+  const setValues = () => {
+    const _seconds = (targetTime - new Date()) / 1000;
+    const _minutes = _seconds / 60;
+    const _hours = _minutes / 60;
+    const _days = _hours / 24;
+    const _weeks = _days / 7;
+
+    setSeconds(Math.floor(_seconds % 60));
+    setMinutes(Math.floor(_minutes % 60));
+    setHours(Math.floor(_hours % 24));
+    setDays(Math.floor(_days % 7));
+    setWeeks(Math.floor(_weeks));
+  };
 
   return (
     <div className="main">
@@ -56,7 +59,10 @@ function Main() {
             <div className="countdown-item-label">Seconds</div>
           </div>
         </div>
-        <p>Get ready to 🎉 celebrate on {targetTime.toDateString()}</p>
+        <span className="celebrate">
+          <span>Get ready to 🎉 celebrate on </span>
+          <span>{targetTime.toLocaleDateString()}</span>
+        </span>
       </div>
       <p className="tagline">
         Made with ❤️ for Amber <span className="muted">| from Olin</span>
