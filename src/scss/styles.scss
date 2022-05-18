@@ -21,14 +21,26 @@ body {
   color: darkslategray;
 }
 
+.muted {
+  opacity: 0.4;
+}
+
 .main {
   background-color: #c0eb75;
   height: 100vh;
   width: 100%;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
+
+  p.tagline {
+    padding: 1rem;
+    background-color: #ffffff40;
+    border-radius: 5px;
+  }
 
   .countdown {
     padding: 3rem;

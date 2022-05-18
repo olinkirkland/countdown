@@ -58,6 +58,9 @@ function Main() {
         </div>
         <p>Get ready to 🎉 celebrate on {targetTime.toDateString()}</p>
       </div>
+      <p className="tagline">
+        Made with ❤️ for Amber <span className="muted">| from Olin</span>
+      </p>
     </div>
   );
 }
