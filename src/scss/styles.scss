@@ -21,6 +21,11 @@ body {
   color: darkslategray;
 }
 
+em {
+  font-style: inherit;
+  color: #82b131;
+}
+
 .muted {
   opacity: 0.4;
 }
@@ -65,31 +70,31 @@ body {
         opacity: 0.6;
       }
     }
-
+    
     .countdown-group {
       display: flex;
       gap: 1rem;
 
       .countdown-item {
-        padding: 1rem;
-        border-radius: 5px;
-        background-color: darkslategray;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
 
         .countdown-item-number {
+          background-color: darkslategray;
+          border-radius: 5px;
           font-size: 2rem;
+          padding: 0.4rem 0.8rem;
+          text-align: center;
+          width: 8rem;
           font-weight: bold;
           color: #c0eb75;
-          border-bottom: 1px dashed lightgray;
-          padding-bottom: 0.4rem;
           margin-bottom: 0.4rem;
         }
 
         .countdown-item-label {
-          color: lightgray;
+          color: slategray;
           letter-spacing: 0.5px;
           text-transform: uppercase;
         }

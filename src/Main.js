@@ -67,6 +67,19 @@ function Main() {
       <p className="tagline">
         Made with ❤️ for Amber <span className="muted">| from Olin</span>
       </p>
+      <div className="countdown">
+        <p>You're my favorite person in the whole world.</p>
+        <p>
+          When I see you, I'm moved to action.
+          <br />
+          <em>When I think of you</em>, the world stands still around me.
+          <br />
+          My world is a <em>brighter place</em> with you in it.
+        </p>
+        <p>
+          <em>Thank you</em> for inspiring me every day.
+        </p>
+      </div>
     </div>
   );
 }
