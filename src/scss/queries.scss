@@ -1,6 +1,10 @@
+@import 'colors';
+
 @media (max-width: 600px) {
   .main {
     justify-content: flex-start;
+    height: auto;
+
     .countdown {
       width: 100%;
       border-radius: 0;
@@ -8,12 +12,14 @@
       .countdown-group {
         width: 100%;
         flex-direction: column;
-        gap: 0.4rem;
+        gap: 0rem;
 
         .countdown-item {
           width: 100%;
           flex-direction: row;
-          background-color: darkslategray;
+          border-radius: 5px;
+          padding: 1rem;
+          gap: 1rem;
 
           .countdown-item-number {
             background-color: none;
@@ -22,10 +28,14 @@
           }
 
           .countdown-item-label {
-            color: lightslategray;
+            color: $shade-medium;
           }
         }
       }
+    }
+
+    .tagline {
+      margin: 1rem 0 1.8rem 0;
     }
   }
 }

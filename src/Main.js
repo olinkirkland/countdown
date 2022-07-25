@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+let version2 = false;
+
 function Main() {
   const targetTime = new Date('2022-12-16T00:00:00');
 
@@ -8,6 +10,7 @@ function Main() {
   const [hours, setHours] = useState(0);
   const [days, setDays] = useState(0);
   const [weeks, setWeeks] = useState(0);
+  const [secondsUntil20Weeks, setSecondsUntil20Weeks] = useState(0);
 
   useEffect(() => {
     setValues();
@@ -28,11 +31,31 @@ function Main() {
     setHours(Math.floor(_hours % 24));
     setDays(Math.floor(_days % 7));
     setWeeks(Math.floor(_weeks));
+
+    const _secondsUntil20Weeks = _seconds - 60 * 60 * 24 * 7 * 20;
+    console.log(_secondsUntil20Weeks);
+    setSecondsUntil20Weeks(Math.floor(_secondsUntil20Weeks));
+    if (_secondsUntil20Weeks <= 0) {
+      // Show the 20 week update
+      version2 = true;
+    }
   };
 
   return (
     <div className="main">
-      <div className="countdown">
+      {!version2 && (
+        <div className="version2-waiting">
+          <span>20 week update is coming soon</span>
+          <div className="progress">
+            <div
+              style={{
+                width: `${((345600 - secondsUntil20Weeks) / 345600) * 100}%`
+              }}
+            />
+          </div>
+        </div>
+      )}
+      <div className="container countdown">
         <header>
           <h2>Counting Down</h2>
           <p>To Amber's Return ✈️🌎</p>
@@ -64,22 +87,8 @@ function Main() {
           <span>{targetTime.toLocaleDateString()}</span>
         </span>
       </div>
-      <p className="tagline">
-        Made with ❤️ for Amber <span className="muted">| from Olin</span>
-      </p>
-      <div className="countdown">
-        <p>You're my favorite person in the whole world.</p>
-        <p>
-          When I see you, I'm moved to action.
-          <br />
-          <em>When I think of you</em>, the world stands still around me.
-          <br />
-          My world is a <em>brighter place</em> with you in it.
-        </p>
-        <p>
-          <em>Thank you</em> for inspiring me every day.
-        </p>
-      </div>
+      {version2 && <div className="container"></div>}
+      <p className="tagline">Made with ❤️</p>
     </div>
   );
 }

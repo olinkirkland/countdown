@@ -1,0 +1,32 @@
+@import 'colors';
+
+.version2-waiting {
+  max-width: 32rem;
+  width: 100%;
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
+
+  span {
+    color: $shade-light;
+  }
+
+  .progress {
+    width: 100%;
+    height: 15px;
+    background-color: $translucent;
+    border-radius: 99px;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+
+    > div {
+      width: 100%;
+      height: 100%;
+      background-color: $shade-light;
+      border-radius: 99px;
+    }
+  }
+}
