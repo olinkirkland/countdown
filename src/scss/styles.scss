@@ -22,6 +22,7 @@ body {
   font-size: 1.6rem;
   letter-spacing: 0.3px;
   color: $primary-medium;
+  background-image: url('../texture.png');
 }
 
 em {
@@ -38,6 +39,13 @@ body {
 }
 
 .main {
+  opacity: 1;
+  transition: all 0.4s;
+
+  &.hidden {
+    opacity: 0;
+  }
+
   height: 100vh;
   width: 100%;
 

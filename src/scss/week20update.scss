@@ -30,3 +30,46 @@
     }
   }
 }
+
+.container--auth {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.input-with-button {
+  border: 2px dashed $primary-medium;
+  border-radius: 99px;
+  display: flex;
+  padding: 0.4rem 0.8rem;
+  width: fit-content;
+
+  input {
+    width: 100%;
+    max-width: 32rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.6rem;
+    padding: 1rem;
+    padding-left: 2rem;
+    letter-spacing: 0.3px;
+    outline: none;
+    border: none;
+    background: none;
+    color: $primary-medium;
+  }
+}
+
+button.icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  img {
+    width: 4rem;
+  }
+}

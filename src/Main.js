@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 
+const SERVER_URL = 'https://ambertime.herokuapp.com/';
+
 let version2 = false;
+let isAuthenticated = false;
 
 function Main() {
   const targetTime = new Date('2022-12-16T00:00:00');
@@ -11,11 +14,19 @@ function Main() {
   const [days, setDays] = useState(0);
   const [weeks, setWeeks] = useState(0);
   const [secondsUntil20Weeks, setSecondsUntil20Weeks] = useState(0);
+  const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Try to get the auth code from the auth localstorage
+    const localPassword = localStorage.getItem('password');
+    setPassword(localPassword ? localPassword : '');
+    if (localPassword) validatePassword(localPassword);
+    else setIsLoading(false);
+
+    // Start countdown loop
     setValues();
     const interval = setInterval(setValues, 1000);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -33,16 +44,40 @@ function Main() {
     setWeeks(Math.floor(_weeks));
 
     const _secondsUntil20Weeks = _seconds - 60 * 60 * 24 * 7 * 20;
-    console.log(_secondsUntil20Weeks);
     setSecondsUntil20Weeks(Math.floor(_secondsUntil20Weeks));
-    if (_secondsUntil20Weeks <= 0) {
+
+    if (window.location.hostname === 'localhost' || _secondsUntil20Weeks <= 0) {
       // Show the 20 week update
       version2 = true;
     }
+    version2 = false;
   };
 
+  useEffect(() => {
+    if (!isLoading) {
+      // Focus the password input
+      const inputPassword = document.querySelector('.container--auth input');
+      if (inputPassword) inputPassword.focus();
+    }
+  }, [isLoading]);
+
+  function validatePassword(passwordOverride) {
+    // Is the password valid?
+    console.log(password, passwordOverride);
+    const p = passwordOverride ? passwordOverride : password;
+    fetch(SERVER_URL + '?password=' + p).then((response) => {
+      if (response.status === 200) {
+        isAuthenticated = true;
+        localStorage.setItem('password', p);
+      } else isAuthenticated = false;
+
+      setIsLoading(false);
+    });
+  }
+
   return (
-    <div className="main">
+    // div className="main", if isLoading, className="main hidden"
+    <div className={isLoading ? 'main hidden' : 'main'}>
       {!version2 && (
         <div className="version2-waiting">
           <span>20 week update is coming soon</span>
@@ -87,7 +122,24 @@ function Main() {
           <span>{targetTime.toLocaleDateString()}</span>
         </span>
       </div>
-      {version2 && <div className="container"></div>}
+
+      {version2 && !isAuthenticated && (
+        <div className="container container--auth">
+          <p>Enter the code to unlock.</p>
+          <div className="input-with-button">
+            <input
+              type="text"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+            <button className="icon" onClick={() => validatePassword()}>
+              <img src="images/ok.png" alt="" />
+            </button>
+          </div>
+        </div>
+      )}
+
+      {version2 && isAuthenticated && <div className="container"></div>}
       <p className="tagline">Made with ❤️</p>
     </div>
   );
