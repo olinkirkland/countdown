@@ -51,7 +51,7 @@ function Main() {
       version2 = true;
     }
 
-    version2 = false;
+    // version2 = false;
   };
 
   useEffect(() => {
