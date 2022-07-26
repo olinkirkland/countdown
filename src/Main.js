@@ -50,7 +50,8 @@ function Main() {
       // Show the 20 week update
       version2 = true;
     }
-    version2 = false;
+
+    // version2 = false;
   };
 
   useEffect(() => {
@@ -90,10 +91,13 @@ function Main() {
           </div>
         </div>
       )}
+
       <div className="container countdown">
         <header>
           <h2>Counting Down</h2>
-          <p>To Amber's Return ✈️🌎</p>
+          <span className="flex-row">
+            <p>to Amber's return</p>
+          </span>
         </header>
         <div className="countdown-group">
           <div className="countdown-item">
@@ -117,9 +121,10 @@ function Main() {
             <div className="countdown-item-label">Seconds</div>
           </div>
         </div>
-        <span className="celebrate">
-          <span>Get ready to 🎉 celebrate on </span>
-          <span>{targetTime.toLocaleDateString()}</span>
+        <span className="flex-row celebrate">
+          <span>Get ready to</span>
+          <img className="icon-inline" src="images/celebrate.png" alt="" />
+          <span>celebrate on {targetTime.toLocaleDateString()}</span>
         </span>
       </div>
 
@@ -140,7 +145,10 @@ function Main() {
       )}
 
       {version2 && isAuthenticated && <div className="container"></div>}
-      <p className="tagline">Made with ❤️</p>
+      <div className="flex-row tagline">
+        <span>Made with</span>
+        <img className="icon-inline" src="images/heart.png" alt="" />
+      </div>
     </div>
   );
 }

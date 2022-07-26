@@ -1,4 +1,5 @@
 @import 'colors';
+@import 'fonts';
 
 * {
   margin: 0;
@@ -38,6 +39,18 @@ body {
   background-color: $primary-dark;
 }
 
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.icon-inline {
+  position: relative;
+  width: 2.8rem;
+}
+
 .main {
   opacity: 1;
   transition: all 0.4s;
@@ -55,12 +68,17 @@ body {
   align-items: center;
   gap: 1rem;
 
-  p.tagline {
+  .tagline {
     padding: 1rem;
     background-color: $translucent;
     border-radius: 5px;
     color: $shade-light;
     font-size: 1.4rem;
+
+    // Overwritten on mobile
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 1rem;
   }
 
   .container {
@@ -83,8 +101,8 @@ body {
       gap: 0.4rem;
 
       p {
-        text-transform: uppercase;
-        letter-spacing: 1px;
+        font-family: 'Satisfy', cursive;
+        font-size: 2.4rem;
         opacity: 0.6;
       }
     }
