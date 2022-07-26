@@ -122,9 +122,7 @@ function Main() {
           </div>
         </div>
         <span className="flex-row celebrate">
-          <span>Get ready to</span>
-          <img className="icon-inline" src="images/celebrate.png" alt="" />
-          <span>celebrate on {targetTime.toLocaleDateString()}</span>
+          Get ready to celebrate on {targetTime.toLocaleDateString()}
         </span>
       </div>
 
