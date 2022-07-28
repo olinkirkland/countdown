@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+import Collection from './Collection';
+import Message from './Message';
+import RewardButton from './RewardButton';
 
 const SERVER_URL = 'https://ambertime.herokuapp.com/';
 
@@ -16,6 +19,13 @@ function Main() {
   const [secondsUntil20Weeks, setSecondsUntil20Weeks] = useState(0);
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+
+  // Rewards
+  const [nextReward, setNextReward] = useState();
+  const [collection, setCollection] = useState([]);
+
+  // Message popup
+  const [currentReward, setCurrentReward] = useState();
 
   useEffect(() => {
     // Try to get the auth code from the auth localstorage
@@ -54,6 +64,39 @@ function Main() {
     // version2 = false;
   };
 
+  function fetchRewardData(p, callback) {
+    // Get the next reward
+    fetch(SERVER_URL + 'next?password=' + p).then((response) => {
+      response.json().then((reward) => {
+        setNextReward(reward);
+      });
+    });
+
+    // Get the collection
+    fetch(SERVER_URL + 'collection?password=' + p).then((response) => {
+      response.json().then((collectionData) => {
+        setCollection(collectionData);
+        if (callback) callback();
+      });
+    });
+  }
+
+  function onRewardButtonClick() {
+    // Unlock the next reward
+    fetch(SERVER_URL + 'unlock?password=' + password).then((response) => {
+      if (response.status === 200) {
+        console.log('Reward unlocked!');
+        fetchRewardData(password, () => {
+          setCurrentReward(nextReward);
+        });
+      } else {
+        response.json().then((error) => {
+          console.log(error);
+        });
+      }
+    });
+  }
+
   useEffect(() => {
     if (!isLoading) {
       // Focus the password input
@@ -64,12 +107,13 @@ function Main() {
 
   function validatePassword(passwordOverride) {
     // Is the password valid?
-    console.log(password, passwordOverride);
     const p = passwordOverride ? passwordOverride : password;
     fetch(SERVER_URL + '?password=' + p).then((response) => {
       if (response.status === 200) {
         isAuthenticated = true;
         localStorage.setItem('password', p);
+        setPassword(p);
+        fetchRewardData(p);
       } else isAuthenticated = false;
 
       setIsLoading(false);
@@ -98,6 +142,7 @@ function Main() {
           <span className="flex-row">
             <p>to Amber's return</p>
           </span>
+          <img src="images/distance.png" />
         </header>
         <div className="countdown-group">
           <div className="countdown-item">
@@ -142,7 +187,27 @@ function Main() {
         </div>
       )}
 
-      {version2 && isAuthenticated && <div className="container"></div>}
+      {version2 && isAuthenticated && (
+        <div className="container container--reward">
+          <RewardButton reward={nextReward} onClick={onRewardButtonClick} />
+          <Collection
+            collection={collection}
+            onSelectReward={(reward) => {
+              setCurrentReward(reward);
+            }}
+          />
+        </div>
+      )}
+
+      {currentReward && (
+        <Message
+          reward={currentReward}
+          onClickClose={() => {
+            setCurrentReward(null);
+          }}
+        />
+      )}
+
       <div className="flex-row tagline">
         <span>Made with</span>
         <img className="icon-inline" src="images/heart.png" alt="" />
