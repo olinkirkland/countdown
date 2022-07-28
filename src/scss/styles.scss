@@ -47,7 +47,6 @@ body {
 }
 
 .icon-inline {
-  position: relative;
   width: 2.8rem;
 }
 
@@ -79,6 +78,7 @@ body {
     position: fixed;
     bottom: 0;
     margin-bottom: 1.6rem;
+    z-index: -1;
   }
 
   .container {

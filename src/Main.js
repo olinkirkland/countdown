@@ -187,7 +187,7 @@ function Main() {
         </div>
       )}
 
-      {version2 && isAuthenticated && (
+      {version2 && isAuthenticated && !currentReward && (
         <div className="container container--reward">
           <RewardButton reward={nextReward} onClick={onRewardButtonClick} />
           <Collection

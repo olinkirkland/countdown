@@ -185,6 +185,11 @@ pre {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  p {
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+  }
 }
 
 button.btn-close {
