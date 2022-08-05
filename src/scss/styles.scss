@@ -58,7 +58,8 @@ body {
     opacity: 0;
   }
 
-  height: 100vh;
+  min-height: 100vh;
+  padding: 2rem 0;
   width: 100%;
 
   display: flex;
@@ -75,10 +76,9 @@ body {
     font-size: 1.4rem;
 
     // Overwritten on mobile
-    position: fixed;
-    bottom: 0;
-    margin-bottom: 1.6rem;
-    z-index: -1;
+    // position: fixed;
+    // bottom: 0;
+    // z-index: -1;
   }
 
   .container {
