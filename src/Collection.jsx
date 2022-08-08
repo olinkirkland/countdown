@@ -22,8 +22,8 @@ const Collection = ({ collection, onSelectReward }) => {
       <ul className="collection-back">
         {new Array(Math.floor((collection.length + 1) / 8 + 1) * 8)
           .fill(0)
-          .map((n) => (
-            <li></li>
+          .map((n, index) => (
+            <li key={index}></li>
           ))}
       </ul>
     </div>

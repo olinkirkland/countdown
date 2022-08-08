@@ -122,97 +122,104 @@ function Main() {
 
   return (
     // div className="main", if isLoading, className="main hidden"
-    <div className={isLoading ? 'main hidden' : 'main'}>
-      {!version2 && (
-        <div className="version2-waiting">
-          <span>20 week update is coming soon</span>
-          <div className="progress">
-            <div
-              style={{
-                width: `${((345600 - secondsUntil20Weeks) / 345600) * 100}%`
+    <>
+      {isLoading && (
+        <div className="loading-message">
+          <span>Connecting...</span>
+        </div>
+      )}
+      <div className={isLoading ? 'main hidden' : 'main'}>
+        {!version2 && (
+          <div className="version2-waiting">
+            <span>20 week update is coming soon</span>
+            <div className="progress">
+              <div
+                style={{
+                  width: `${((345600 - secondsUntil20Weeks) / 345600) * 100}%`
+                }}
+              />
+            </div>
+          </div>
+        )}
+
+        <div className="container countdown">
+          <header>
+            <h2>Counting Down</h2>
+            <span className="flex-row">
+              <p>to Amber's return</p>
+            </span>
+            <img src="images/distance.png" alt="distance" />
+          </header>
+          <div className="countdown-group">
+            <div className="countdown-item">
+              <div className="countdown-item-number">{weeks}</div>
+              <div className="countdown-item-label">Weeks</div>
+            </div>
+            <div className="countdown-item">
+              <div className="countdown-item-number">{days}</div>
+              <div className="countdown-item-label">Days</div>
+            </div>
+            <div className="countdown-item">
+              <div className="countdown-item-number">{hours}</div>
+              <div className="countdown-item-label">Hours</div>
+            </div>
+            <div className="countdown-item">
+              <div className="countdown-item-number">{minutes}</div>
+              <div className="countdown-item-label">Minutes</div>
+            </div>
+            <div className="countdown-item">
+              <div className="countdown-item-number">{seconds}</div>
+              <div className="countdown-item-label">Seconds</div>
+            </div>
+          </div>
+          <span className="flex-row celebrate">
+            Get ready to celebrate on {targetTime.toLocaleDateString()}
+          </span>
+        </div>
+
+        {version2 && !isAuthenticated && (
+          <div className="container container--auth">
+            <p>Enter the code to unlock.</p>
+            <div className="input-with-button">
+              <input
+                type="text"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+              />
+              <button className="icon" onClick={() => validatePassword()}>
+                <img src="images/ok.png" alt="" />
+              </button>
+            </div>
+          </div>
+        )}
+
+        {version2 && isAuthenticated && !currentReward && (
+          <div className="container container--reward">
+            <RewardButton reward={nextReward} onClick={onRewardButtonClick} />
+            <Collection
+              collection={collection}
+              onSelectReward={(reward) => {
+                setCurrentReward(reward);
               }}
             />
           </div>
-        </div>
-      )}
+        )}
 
-      <div className="container countdown">
-        <header>
-          <h2>Counting Down</h2>
-          <span className="flex-row">
-            <p>to Amber's return</p>
-          </span>
-          <img src="images/distance.png" />
-        </header>
-        <div className="countdown-group">
-          <div className="countdown-item">
-            <div className="countdown-item-number">{weeks}</div>
-            <div className="countdown-item-label">Weeks</div>
-          </div>
-          <div className="countdown-item">
-            <div className="countdown-item-number">{days}</div>
-            <div className="countdown-item-label">Days</div>
-          </div>
-          <div className="countdown-item">
-            <div className="countdown-item-number">{hours}</div>
-            <div className="countdown-item-label">Hours</div>
-          </div>
-          <div className="countdown-item">
-            <div className="countdown-item-number">{minutes}</div>
-            <div className="countdown-item-label">Minutes</div>
-          </div>
-          <div className="countdown-item">
-            <div className="countdown-item-number">{seconds}</div>
-            <div className="countdown-item-label">Seconds</div>
-          </div>
-        </div>
-        <span className="flex-row celebrate">
-          Get ready to celebrate on {targetTime.toLocaleDateString()}
-        </span>
-      </div>
-
-      {version2 && !isAuthenticated && (
-        <div className="container container--auth">
-          <p>Enter the code to unlock.</p>
-          <div className="input-with-button">
-            <input
-              type="text"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-            />
-            <button className="icon" onClick={() => validatePassword()}>
-              <img src="images/ok.png" alt="" />
-            </button>
-          </div>
-        </div>
-      )}
-
-      {version2 && isAuthenticated && !currentReward && (
-        <div className="container container--reward">
-          <RewardButton reward={nextReward} onClick={onRewardButtonClick} />
-          <Collection
-            collection={collection}
-            onSelectReward={(reward) => {
-              setCurrentReward(reward);
+        {currentReward && (
+          <Message
+            reward={currentReward}
+            onClickClose={() => {
+              setCurrentReward(null);
             }}
           />
+        )}
+
+        <div className="flex-row tagline">
+          <span>Made with</span>
+          <img className="icon-inline" src="images/heart.png" alt="" />
         </div>
-      )}
-
-      {currentReward && (
-        <Message
-          reward={currentReward}
-          onClickClose={() => {
-            setCurrentReward(null);
-          }}
-        />
-      )}
-
-      <div className="flex-row tagline">
-        <span>Made with</span>
-        <img className="icon-inline" src="images/heart.png" alt="" />
       </div>
-    </div>
+    </>
   );
 }
 
