@@ -14,13 +14,23 @@ const Collection = ({ collection, onSelectReward }) => {
             }}
           >
             <h3>{reward.index}</h3>
+            {reward.isUnlocked && (
+              // reward.data.description contains '<img', then add the .with-image class
+              <div
+                className={`date-badge ${
+                  reward.data.description.includes('<img') ? 'with-image' : ''
+                }`}
+              >
+                {formatDate(reward.availableOnDate)}
+              </div>
+            )}
           </li>
         ))}
         <li className="next"></li>
       </ul>
 
       <ul className="collection-back">
-        {new Array(Math.floor((collection.length + 1) / 8 + 1) * 8)
+        {new Array(Math.floor((collection.length + 1) / 8) * 8)
           .fill(0)
           .map((n, index) => (
             <li key={index}></li>
@@ -29,5 +39,11 @@ const Collection = ({ collection, onSelectReward }) => {
     </div>
   );
 };
+
+function formatDate(date) {
+  // 2022-08-02T21:55:38.867Z to 8/2
+  const d = new Date(date);
+  return `${d.getMonth() + 1}/${d.getDate()}`;
+}
 
 export default Collection;
