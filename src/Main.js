@@ -3,8 +3,8 @@ import Collection from './Collection';
 import Message from './Message';
 import RewardButton from './RewardButton';
 
-// const SERVER_URL = 'https://ambertime.herokuapp.com/';
-const SERVER_URL = 'http://127.0.0.1:3001/';
+const SERVER_URL = 'https://ambertime.herokuapp.com/';
+// const SERVER_URL = 'http://127.0.0.1:3001/';
 
 let version2 = false;
 let isAuthenticated = false;
