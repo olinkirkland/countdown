@@ -14,6 +14,7 @@ const Collection = ({ collection, onSelectReward }) => {
             }}
           >
             <h3>{reward.index}</h3>
+            {reward.isFavorite && <img src="images/star.png" />}
             {reward.isUnlocked && (
               // reward.data.description contains '<img', then add the .with-image class
               <div

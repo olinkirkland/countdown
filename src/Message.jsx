@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Message = ({ reward, onClickClose }) => {
+const Message = ({ reward, onClickClose, onClickFavorite }) => {
   if (!reward) return <></>;
 
   return (
@@ -14,6 +14,13 @@ const Message = ({ reward, onClickClose }) => {
           __html: reward.data.description.replaceAll('<br />', '<br /><br />')
         }}
       ></p>
+
+      <button
+        className={`btn-favorite ${reward.isFavorite ? 'active' : ''}`}
+        onClick={onClickFavorite}
+      >
+        <img src="/images/star.png" />
+      </button>
     </div>
   );
 };

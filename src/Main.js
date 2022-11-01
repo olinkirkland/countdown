@@ -3,7 +3,8 @@ import Collection from './Collection';
 import Message from './Message';
 import RewardButton from './RewardButton';
 
-const SERVER_URL = 'https://ambertime.herokuapp.com/';
+// const SERVER_URL = 'https://ambertime.herokuapp.com/';
+const SERVER_URL = 'http://127.0.0.1:3001/';
 
 let version2 = false;
 let isAuthenticated = false;
@@ -77,6 +78,28 @@ function Main() {
       response.json().then((collectionData) => {
         setCollection(collectionData);
         if (callback) callback();
+      });
+    });
+  }
+
+  function setRewardFavorite(index, isFavorite) {
+    console.log('setRewardFavorite', index, isFavorite);
+    fetch(
+      SERVER_URL +
+        'favorite?password=' +
+        password +
+        '&index=' +
+        index +
+        '&favorite=' +
+        isFavorite
+    ).then((response) => {
+      response.json().then((collectionData) => {
+        setCollection(collectionData);
+        const rewardIndex = index;
+        setTimeout(() => {
+          setCurrentReward(null);
+          setCurrentReward(collectionData[rewardIndex - 1]);
+        });
       });
     });
   }
@@ -210,6 +233,9 @@ function Main() {
             reward={currentReward}
             onClickClose={() => {
               setCurrentReward(null);
+            }}
+            onClickFavorite={() => {
+              setRewardFavorite(currentReward.index, !currentReward.isFavorite);
             }}
           />
         )}
