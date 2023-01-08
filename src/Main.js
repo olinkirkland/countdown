@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import Collection from './Collection';
 import Message from './Message';
-import RewardButton from './RewardButton';
+import collectionData from './CollectionData.json';
 
+const SECONDS_IN_DAY = 60 * 60 * 24;
+const totalSecondsUntilUpdate = SECONDS_IN_DAY * 28; // 4 weeks
 const SERVER_URL = 'https://countdown-backend-production.up.railway.app/';
 // const SERVER_URL = 'http://127.0.0.1:3001/';
 
@@ -10,20 +12,20 @@ let version2 = false;
 let isAuthenticated = false;
 
 function Main() {
-  const targetTime = new Date('2022-12-16T00:00:00');
+  const targetTime = new Date('2023-03-01T00:00:00');
 
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [hours, setHours] = useState(0);
   const [days, setDays] = useState(0);
   const [weeks, setWeeks] = useState(0);
-  const [secondsUntil20Weeks, setSecondsUntil20Weeks] = useState(0);
+  const [secondsUntilUpdate, setSecondsUntilUpdate] = useState(0);
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
   // Rewards
-  const [nextReward, setNextReward] = useState();
-  const [collection, setCollection] = useState([]);
+  const [collection, setCollection] = useState(collectionData);
+  const [showCollection, setShowCollection] = useState(false);
 
   // Message popup
   const [currentReward, setCurrentReward] = useState();
@@ -41,6 +43,10 @@ function Main() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    console.log('Seconds until update', secondsUntilUpdate);
+  }, [secondsUntilUpdate]);
+
   const setValues = () => {
     const _seconds = (targetTime - new Date()) / 1000;
     const _minutes = _seconds / 60;
@@ -54,33 +60,14 @@ function Main() {
     setDays(Math.floor(_days % 7));
     setWeeks(Math.floor(_weeks));
 
-    const _secondsUntil20Weeks = _seconds - 60 * 60 * 24 * 7 * 20;
-    setSecondsUntil20Weeks(Math.floor(_secondsUntil20Weeks));
+    console.log('_seconds', _seconds);
+    setSecondsUntilUpdate(Math.floor(_seconds - totalSecondsUntilUpdate));
 
-    if (window.location.hostname === 'localhost' || _secondsUntil20Weeks <= 0) {
+    if (window.location.hostname === 'localhost' || secondsUntilUpdate <= 0) {
       // Show the 20 week update
-      version2 = true;
+      // version2 = true;
     }
-
-    // version2 = false;
   };
-
-  function fetchRewardData(p, callback) {
-    // Get the next reward
-    fetch(SERVER_URL + 'next?password=' + p).then((response) => {
-      response.json().then((reward) => {
-        setNextReward(reward);
-      });
-    });
-
-    // Get the collection
-    fetch(SERVER_URL + 'collection?password=' + p).then((response) => {
-      response.json().then((collectionData) => {
-        setCollection(collectionData);
-        if (callback) callback();
-      });
-    });
-  }
 
   function setRewardFavorite(index, isFavorite) {
     console.log('setRewardFavorite', index, isFavorite);
@@ -104,22 +91,6 @@ function Main() {
     });
   }
 
-  function onRewardButtonClick() {
-    // Unlock the next reward
-    fetch(SERVER_URL + 'unlock?password=' + password).then((response) => {
-      if (response.status === 200) {
-        console.log('Reward unlocked!');
-        fetchRewardData(password, () => {
-          setCurrentReward(nextReward);
-        });
-      } else {
-        response.json().then((error) => {
-          console.log(error);
-        });
-      }
-    });
-  }
-
   useEffect(() => {
     if (!isLoading) {
       // Focus the password input
@@ -136,7 +107,6 @@ function Main() {
         isAuthenticated = true;
         localStorage.setItem('password', p);
         setPassword(p);
-        fetchRewardData(p);
       } else isAuthenticated = false;
 
       setIsLoading(false);
@@ -154,11 +124,15 @@ function Main() {
       <div className={isLoading ? 'main hidden' : 'main'}>
         {!version2 && (
           <div className="version2-waiting">
-            <span>20 week update is coming soon</span>
+            <span>Spring update is coming soon!</span>
             <div className="progress">
               <div
                 style={{
-                  width: `${((345600 - secondsUntil20Weeks) / 345600) * 100}%`
+                  width: `${
+                    ((totalSecondsUntilUpdate - secondsUntilUpdate) /
+                      totalSecondsUntilUpdate) *
+                    100
+                  }%`
                 }}
               />
             </div>
@@ -169,9 +143,9 @@ function Main() {
           <header>
             <h2>Counting Down</h2>
             <span className="flex-row">
-              <p>to Amber's return</p>
+              <p>to our next reunification</p>
             </span>
-            <img src="images/distance.png" alt="distance" />
+            <img className="logo" src="images/logo.png" alt="logo" />
           </header>
           <div className="countdown-group">
             <div className="countdown-item">
@@ -195,12 +169,10 @@ function Main() {
               <div className="countdown-item-label">Seconds</div>
             </div>
           </div>
-          <span className="flex-row celebrate">
-            Get ready to celebrate on {targetTime.toLocaleDateString()}
-          </span>
+          {/* <span className="flex-row celebrate">Can't wait to see you!</span> */}
         </div>
 
-        {version2 && !isAuthenticated && (
+        {!isAuthenticated && (
           <div className="container container--auth">
             <p>Enter the code to unlock.</p>
             <div className="input-with-button">
@@ -216,15 +188,24 @@ function Main() {
           </div>
         )}
 
-        {version2 && isAuthenticated && !currentReward && (
+        {isAuthenticated && !currentReward && (
           <div className="container container--reward">
-            <RewardButton reward={nextReward} onClick={onRewardButtonClick} />
-            <Collection
-              collection={collection}
-              onSelectReward={(reward) => {
-                setCurrentReward(reward);
-              }}
-            />
+            <button
+              className="button"
+              onClick={() =>
+                setShowCollection((showCollection) => !showCollection)
+              }
+            >
+              {showCollection ? 'Hide' : 'Show'} 2022 Messages
+            </button>
+            {showCollection && (
+              <Collection
+                collection={collection}
+                onSelectReward={(reward) => {
+                  setCurrentReward(reward);
+                }}
+              />
+            )}
           </div>
         )}
 
@@ -241,8 +222,7 @@ function Main() {
         )}
 
         <div className="flex-row tagline">
-          <span>Made with</span>
-          <img className="icon-inline" src="images/heart.png" alt="" />
+          <span>Made with lub for my bug</span>
         </div>
       </div>
     </>

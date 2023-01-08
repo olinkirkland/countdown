@@ -35,6 +35,16 @@
   }
 }
 
+.container--reward {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+
+  > button.button {
+    align-self: center;
+  }
+}
+
 .container--auth {
   display: flex;
   flex-direction: column;
@@ -77,6 +87,29 @@ button.icon {
 
   img {
     width: 4rem;
+  }
+}
+
+button.button {
+  width: 100%;
+  max-width: 32rem;
+  padding: 1rem;
+  border-radius: 99px;
+  border: none;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  background-color: $primary-medium;
+  color: $shade-light;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: $primary-dark;
+  }
+
+  .flex-row {
+    justify-content: center;
   }
 }
 
@@ -126,14 +159,13 @@ pre {
 }
 
 .collection-box {
-  margin-top: 3.2rem;
   position: relative;
 
   ul.collection,
   ul.collection-back {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     width: 100%;
     gap: 1.4rem;
 
@@ -160,6 +192,10 @@ pre {
       cursor: pointer;
       position: relative;
       transition: all 0.3s;
+
+      h3 {
+        font-size: 4rem;
+      }
 
       &:hover {
         background-color: $primary-medium;
@@ -199,7 +235,7 @@ pre {
   font-size: 1.2rem;
   right: -1.1rem;
   bottom: -1.1rem;
-  border-radius: 99px;
+  // border-radius: 99px;
 
   // If has the class .with-image, then show a bullet point before of the date-badge
   &.with-image::before {

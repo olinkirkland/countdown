@@ -69,7 +69,7 @@ body {
   gap: 2rem;
 
   .tagline {
-    padding: 1rem;
+    padding: 1rem 1.4rem;
     background-color: $translucent;
     border-radius: 5px;
     color: $shade-light;
@@ -102,9 +102,9 @@ body {
       width: 100%;
 
       img {
-        width: 4rem;
+        width: 12rem;
         margin: 4rem;
-        opacity: 0.3;
+        opacity: 0.8;
       }
 
       p {
@@ -165,5 +165,12 @@ body {
     color: $shade-light;
     background-color: $translucent;
     border-radius: 5px;
+  }
+}
+
+.logo {
+  transition: transform 0.4s;
+  &:hover {
+    transform: scale(1.2);
   }
 }

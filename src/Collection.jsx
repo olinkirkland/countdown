@@ -8,13 +8,13 @@ const Collection = ({ collection, onSelectReward }) => {
       <ul className="collection">
         {collection.map((reward) => (
           <li
-            key={reward.index}
+            key={'collection-' + reward.index}
             onClick={() => {
               onSelectReward(reward);
             }}
           >
             <h3>{reward.index}</h3>
-            {reward.isFavorite && <img src="images/star.png" />}
+            {/* {reward.isFavorite && <img src="images/star.png" />} */}
             {reward.isUnlocked && (
               // reward.data.description contains '<img', then add the .with-image class
               <div
@@ -27,15 +27,13 @@ const Collection = ({ collection, onSelectReward }) => {
             )}
           </li>
         ))}
-        <li className="next"></li>
+        {/* <li className="next"></li> */}
       </ul>
 
       <ul className="collection-back">
-        {new Array(Math.floor((collection.length + 1) / 8) * 8)
-          .fill(0)
-          .map((n, index) => (
-            <li key={index}></li>
-          ))}
+        {new Array(Math.floor(collection.length)).fill(0).map((n, index) => (
+          <li key={'collection-back-' + index}></li>
+        ))}
       </ul>
     </div>
   );

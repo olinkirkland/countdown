@@ -5,8 +5,9 @@ const Message = ({ reward, onClickClose, onClickFavorite }) => {
 
   return (
     <div className="container message">
+      <span>#{reward.index}</span>
       <button className="btn-close" onClick={onClickClose}>
-        <img src="/images/close.png" />
+        <img src="/images/close.png" alt="close" />
       </button>
       <h2>{reward.data.title}</h2>
       <p
@@ -15,12 +16,12 @@ const Message = ({ reward, onClickClose, onClickFavorite }) => {
         }}
       ></p>
 
-      <button
+      {/* <button
         className={`btn-favorite ${reward.isFavorite ? 'active' : ''}`}
         onClick={onClickFavorite}
       >
         <img src="/images/star.png" />
-      </button>
+      </button> */}
     </div>
   );
 };
