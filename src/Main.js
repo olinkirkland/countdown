@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react';
 import Collection from './Collection';
 import Message from './Message';
 import collectionData from './CollectionData.json';
+import toSemanticDate from './semanticDate';
 
-const SECONDS_IN_DAY = 60 * 60 * 24;
-const totalSecondsUntilUpdate = SECONDS_IN_DAY * 28; // 4 weeks
 const SERVER_URL = 'https://countdown-backend-production.up.railway.app/';
 // const SERVER_URL = 'http://127.0.0.1:3001/';
 
@@ -12,14 +11,18 @@ let version2 = false;
 let isAuthenticated = false;
 
 function Main() {
-  const targetTime = new Date('2023-03-01T00:00:00');
+  const targetTime = new Date('2023-03-12T00:00:00');
+  const countdownPatchReleaseFromTime = new Date('2023-01-01T00:00:00');
+  const patchReleaseTime = new Date('2023-02-26T00:00:00');
 
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [hours, setHours] = useState(0);
   const [days, setDays] = useState(0);
   const [weeks, setWeeks] = useState(0);
-  const [secondsUntilUpdate, setSecondsUntilUpdate] = useState(0);
+
+  const [secondsUntilPatchRelease, setSecondsUntilPatchRelease] = useState(0);
+  const [percentUntilUpdate, setPercentUntilUpdate] = useState(0);
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
@@ -43,10 +46,6 @@ function Main() {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    console.log('Seconds until update', secondsUntilUpdate);
-  }, [secondsUntilUpdate]);
-
   const setValues = () => {
     const _seconds = (targetTime - new Date()) / 1000;
     const _minutes = _seconds / 60;
@@ -60,14 +59,31 @@ function Main() {
     setDays(Math.floor(_days % 7));
     setWeeks(Math.floor(_weeks));
 
-    console.log('_seconds', _seconds);
-    setSecondsUntilUpdate(Math.floor(_seconds - totalSecondsUntilUpdate));
+    // Update the seconds until patchReleaseTime
+    setSecondsUntilPatchRelease(
+      Math.floor((patchReleaseTime.valueOf() - new Date().valueOf()) / 1000)
+    );
 
-    if (window.location.hostname === 'localhost' || secondsUntilUpdate <= 0) {
+    if (
+      window.location.hostname === 'localhost' ||
+      secondsUntilPatchRelease <= 0
+    ) {
       // Show the 20 week update
       // version2 = true;
     }
   };
+
+  useEffect(() => {
+    const totalSeconds =
+      (patchReleaseTime.valueOf() - countdownPatchReleaseFromTime.valueOf()) /
+      1000;
+
+    const percent = Math.floor(
+      ((totalSeconds - secondsUntilPatchRelease) / totalSeconds) * 100
+    );
+
+    setPercentUntilUpdate(percent);
+  }, [secondsUntilPatchRelease]);
 
   function setRewardFavorite(index, isFavorite) {
     console.log('setRewardFavorite', index, isFavorite);
@@ -128,14 +144,11 @@ function Main() {
             <div className="progress">
               <div
                 style={{
-                  width: `${
-                    ((totalSecondsUntilUpdate - secondsUntilUpdate) /
-                      totalSecondsUntilUpdate) *
-                    100
-                  }%`
+                  width: percentUntilUpdate + '%'
                 }}
               />
             </div>
+            <span>{percentUntilUpdate}%</span>
           </div>
         )}
 
@@ -169,7 +182,9 @@ function Main() {
               <div className="countdown-item-label">Seconds</div>
             </div>
           </div>
-          {/* <span className="flex-row celebrate">Can't wait to see you!</span> */}
+          <span className="flex-row celebrate">
+            Can't wait to see you on {toSemanticDate(targetTime)}!
+          </span>
         </div>
 
         {!isAuthenticated && (
@@ -196,7 +211,7 @@ function Main() {
                 setShowCollection((showCollection) => !showCollection)
               }
             >
-              {showCollection ? 'Hide' : 'Show'} 2022 Messages
+              {showCollection ? 'Hide' : 'Show'} ❤️ Notes
             </button>
             {showCollection && (
               <Collection
