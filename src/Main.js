@@ -11,9 +11,9 @@ let version2 = false;
 let isAuthenticated = false;
 
 function Main() {
-  const targetTime = new Date('2023-03-12T00:00:00');
+  const targetTime = new Date('2023-03-23T19:30:00');
   const countdownPatchReleaseFromTime = new Date('2023-01-01T00:00:00');
-  const patchReleaseTime = new Date('2023-02-26T00:00:00');
+  const patchReleaseTime = new Date('2023-03-01T00:00:00');
 
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
