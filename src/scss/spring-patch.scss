@@ -1,0 +1,11 @@
+// button.fortune
+button.fortune-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}

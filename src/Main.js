@@ -3,6 +3,7 @@ import Collection from './Collection';
 import Message from './Message';
 import collectionData from './CollectionData.json';
 import toSemanticDate from './semanticDate';
+import Fortune from './Fortune';
 
 const SERVER_URL = 'https://countdown-backend-production.up.railway.app/';
 // const SERVER_URL = 'http://127.0.0.1:3001/';
@@ -69,7 +70,7 @@ function Main() {
       secondsUntilPatchRelease <= 0
     ) {
       // Show the 20 week update
-      // version2 = true;
+      version2 = true;
     }
   };
 
@@ -158,7 +159,9 @@ function Main() {
             <span className="flex-row">
               <p>to our next reunification</p>
             </span>
-            <img className="logo" src="images/logo.png" alt="logo" />
+            {(version2 && isAuthenticated && <Fortune />) || (
+              <img className="logo" src="images/logo.png" alt="logo" />
+            )}
           </header>
           <div className="countdown-group">
             <div className="countdown-item">
@@ -197,7 +200,7 @@ function Main() {
                 onChange={(event) => setPassword(event.target.value)}
               />
               <button className="icon" onClick={() => validatePassword()}>
-                <img src="images/ok.png" alt="" />
+                <i className="fas fa-right-to-bracket" />
               </button>
             </div>
           </div>
@@ -206,12 +209,14 @@ function Main() {
         {isAuthenticated && !currentReward && (
           <div className="container container--reward">
             <button
-              className="button"
+              className="button button--show-collection"
               onClick={() =>
                 setShowCollection((showCollection) => !showCollection)
               }
             >
-              {showCollection ? 'Hide' : 'Show'} ❤️ Notes
+              {showCollection ? 'Hide' : 'Show'}
+              <i className="fas fa-heart" />
+              Notes
             </button>
             {showCollection && (
               <Collection

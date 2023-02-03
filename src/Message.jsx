@@ -7,7 +7,7 @@ const Message = ({ reward, onClickClose, onClickFavorite }) => {
     <div className="container message">
       <span>#{reward.index}</span>
       <button className="btn-close" onClick={onClickClose}>
-        <img src="/images/close.png" alt="close" />
+        <i className="fas fa-times"></i>
       </button>
       <h2>{reward.data.title}</h2>
       <p

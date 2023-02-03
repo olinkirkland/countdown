@@ -40,8 +40,11 @@
   flex-direction: column;
   gap: 2.4rem;
 
-  > button.button {
+  > button.button--show-collection {
     align-self: center;
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
   }
 }
 
@@ -63,7 +66,7 @@
     width: 100%;
     max-width: 32rem;
     font-family: 'Outfit', sans-serif;
-    font-size: 1.6rem;
+    font-size: 2.4rem;
     padding: 1rem;
     padding-left: 2rem;
     letter-spacing: 0.3px;
@@ -73,6 +76,13 @@
     color: $primary-medium;
     user-select: text;
     -webkit-user-select: text;
+  }
+
+  button.icon {
+    color: $shade-light;
+    background: $primary-medium;
+    border-radius: 99px;
+    padding: 2.4rem;
   }
 }
 
@@ -263,11 +273,13 @@ button.btn-close {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: none;
   border: none;
   cursor: pointer;
   font-size: 2rem;
-  color: $primary-medium;
+  color: $shade-light;
+  background-color: $primary-medium;
+  width: 4rem;
+  aspect-ratio: 1;
 }
 
 button.btn-favorite {
