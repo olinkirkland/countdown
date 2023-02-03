@@ -84,7 +84,7 @@ function Main() {
     );
 
     setPercentUntilUpdate(percent);
-  }, [secondsUntilPatchRelease]);
+  }, [countdownPatchReleaseFromTime, patchReleaseTime, secondsUntilPatchRelease]);
 
   function setRewardFavorite(index, isFavorite) {
     console.log('setRewardFavorite', index, isFavorite);
