@@ -1,0 +1,46 @@
+[
+  {
+    "question": "Which of the following elements do you most relate to today?",
+    "answers": ["Fire", "Water", "Air"]
+  },
+  {
+    "question": "What color represents how you feel right now?",
+    "answers": ["Blue", "Yellow", "Red"]
+  },
+  {
+    "question": "How do you feel about the current situation in your life?",
+    "answers": ["Hopeful", "Content", "Uncertain"]
+  },
+  {
+    "question": "What would you like to focus on today?",
+    "answers": [
+      "Peace and contentment",
+      "Growth and progress",
+      "Love and connection"
+    ]
+  },
+  {
+    "question": "What best describes your current state of mind?",
+    "answers": ["Calm", "Energized", "Frenetic"]
+  },
+  {
+    "question": "Which of the following best describes how you're feeling right now?",
+    "answers": ["Inspired", "Motivated", "Burdened"]
+  },
+  {
+    "question": "What do you need the most right now?",
+    "answers": ["Time to reflect", "Time to create", "Time to rest"]
+  },
+  {
+    "question": "Which of the following do you need to feel balanced today?",
+    "answers": ["Time alone", "Time with others", "Time to explore"]
+  },
+  {
+    "question": "What is your current outlook on life?",
+    "answers": ["Positive", "Neutral", "Negative"]
+  },
+  {
+    "question": "What is the first thing that comes to mind when you think of your future?",
+    "answers": ["Hope", "Excitement", "Fear"]
+  }
+]

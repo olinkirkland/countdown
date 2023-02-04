@@ -1,4 +1,5 @@
-// button.fortune
+@import 'colors';
+
 button.fortune-button {
   background-color: transparent;
   border: none;
@@ -7,5 +8,297 @@ button.fortune-button {
 
   &:hover {
     transform: scale(1.1);
+  }
+}
+
+.popup {
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  padding: 2rem;
+  position: fixed;
+  overflow: auto;
+  z-index: 9999;
+}
+
+.popup-overlay {
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9998;
+
+  display: none;
+  &.active {
+    display: block;
+  }
+}
+
+.popup.fortune {
+  * {
+    list-style: none;
+  }
+
+  background: $shade-dark;
+
+  button.button {
+    background-color: $shade-medium;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+    max-width: initial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    > i {
+      font-size: 1.6rem;
+
+      &:first-child {
+        margin-right: 0.8rem;
+      }
+      &:last-child {
+        margin-left: 0.8rem;
+      }
+    }
+
+    &.button--primary {
+      background-color: $shade-light;
+      color: $shade-dark;
+    }
+
+    &.selected {
+      background-color: $shade-light;
+      color: $shade-dark;
+    }
+
+    &.button--fit {
+      width: fit-content;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  h2 {
+    font-family: 'Satisfy', cursive;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+    text-align: center;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px dashed $shade-medium;
+    margin-bottom: 2rem;
+  }
+
+  color: $shade-light;
+
+  &:not(.active) {
+    display: none;
+  }
+
+  p,
+  button,
+  h2,
+  h3 {
+    margin-bottom: 1.2rem;
+    line-height: 1.6;
+  }
+
+  button.btn-close {
+    background-color: $shade-medium;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .fortune__intro {
+    margin-bottom: 2.4rem;
+
+    button.button--primary {
+      margin-top: 2rem;
+      margin-bottom: 4rem;
+    }
+  }
+
+  .fortune-interview__question-group {
+    // padding: 1.2rem;
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s;
+
+    &:not(.active) {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .fortune-interview__question {
+      margin-bottom: 2.4rem;
+    }
+
+    ul.fortune-interview__answers {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1.2rem;
+
+      li {
+      }
+    }
+
+    button.button-next {
+      margin: 0 auto;
+    }
+  }
+
+  section:not(:last-child) {
+    margin-bottom: 4rem;
+  }
+
+  section.fortune-deck {
+    display: flex;
+    flex-direction: column;
+
+    &:not(.active) {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .deck-message {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 6.4rem;
+        animation: shake 1s infinite linear;
+
+        @keyframes shake {
+          0% {
+            transform: translate(1px, 1px) rotate(0deg);
+          }
+          10% {
+            transform: translate(-1px, -2px) rotate(-1deg);
+          }
+          20% {
+            transform: translate(-3px, 0px) rotate(1deg);
+          }
+          30% {
+            transform: translate(3px, 2px) rotate(0deg);
+          }
+          40% {
+            transform: translate(1px, -1px) rotate(1deg);
+          }
+          50% {
+            transform: translate(-1px, 2px) rotate(-1deg);
+          }
+          60% {
+            transform: translate(-3px, 1px) rotate(0deg);
+          }
+          70% {
+            transform: translate(3px, 1px) rotate(-1deg);
+          }
+          80% {
+            transform: translate(-1px, -1px) rotate(1deg);
+          }
+          90% {
+            transform: translate(1px, 2px) rotate(0deg);
+          }
+          100% {
+            transform: translate(1px, -2px) rotate(-1deg);
+          }
+        }
+      }
+    }
+  }
+
+  .fortune-cards__deck {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1.2rem;
+
+    .fortune-cards__card {
+      cursor: pointer;
+      height: 18rem;
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+      position: relative;
+
+      .fortune-cards__card__back {
+        transition: all 0.2s;
+        opacity: 1;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        position: absolute;
+
+        .fortune-cards__card__back__type {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          background: radial-gradient(
+            circle,
+            rgba(0, 0, 0, 0.6) 0%,
+            rgba(0, 0, 0, 0.6) 50%,
+            rgba(0, 0, 0, 0.8) 100%
+          );
+          img {
+            width: 2rem;
+            height: 2rem;
+            object-fit: contain;
+            margin: 1rem;
+          }
+          span {
+            text-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+          }
+        }
+      }
+
+      &.revealed .fortune-cards__card__back {
+        opacity: 0;
+      }
+
+      .fortune-cards__card__front {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        background-color: $shade-medium;
+      }
+
+      img {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        object-fit: cover;
+      }
+    }
   }
 }

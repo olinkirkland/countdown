@@ -9,12 +9,12 @@
       width: 100%;
       border-radius: 0;
 
-      .countdown-group {
+      ul.countdown-group {
         width: 100%;
         flex-direction: column;
         gap: 0rem;
 
-        .countdown-item {
+        li.countdown-item {
           width: 100%;
           flex-direction: row;
           border-radius: 5px;

@@ -84,7 +84,11 @@ function Main() {
     );
 
     setPercentUntilUpdate(percent);
-  }, [countdownPatchReleaseFromTime, patchReleaseTime, secondsUntilPatchRelease]);
+  }, [
+    countdownPatchReleaseFromTime,
+    patchReleaseTime,
+    secondsUntilPatchRelease
+  ]);
 
   function setRewardFavorite(index, isFavorite) {
     console.log('setRewardFavorite', index, isFavorite);
@@ -156,35 +160,33 @@ function Main() {
         <div className="container countdown">
           <header>
             <h2>Counting Down</h2>
-            <span className="flex-row">
-              <p>to our next reunification</p>
-            </span>
+            <p>to our next reunification</p>
             {(version2 && isAuthenticated && <Fortune />) || (
               <img className="logo" src="images/logo.png" alt="logo" />
             )}
           </header>
-          <div className="countdown-group">
-            <div className="countdown-item">
+          <ul className="countdown-group">
+            <li className="countdown-item">
               <div className="countdown-item-number">{weeks}</div>
               <div className="countdown-item-label">Weeks</div>
-            </div>
-            <div className="countdown-item">
+            </li>
+            <li className="countdown-item">
               <div className="countdown-item-number">{days}</div>
               <div className="countdown-item-label">Days</div>
-            </div>
-            <div className="countdown-item">
+            </li>
+            <li className="countdown-item">
               <div className="countdown-item-number">{hours}</div>
               <div className="countdown-item-label">Hours</div>
-            </div>
-            <div className="countdown-item">
+            </li>
+            <li className="countdown-item">
               <div className="countdown-item-number">{minutes}</div>
               <div className="countdown-item-label">Minutes</div>
-            </div>
-            <div className="countdown-item">
+            </li>
+            <li className="countdown-item">
               <div className="countdown-item-number">{seconds}</div>
               <div className="countdown-item-label">Seconds</div>
-            </div>
-          </div>
+            </li>
+          </ul>
           <span className="flex-row celebrate">
             Can't wait to see you on {toSemanticDate(targetTime)}!
           </span>
