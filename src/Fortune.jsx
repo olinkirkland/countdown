@@ -56,7 +56,7 @@ export default function Fortune() {
             behavior: 'smooth',
             block: 'start'
           });
-      }, 400);
+      }, 2000);
     }
   }, [chosenCards]);
 
