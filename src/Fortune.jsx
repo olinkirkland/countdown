@@ -338,8 +338,7 @@ export default function Fortune() {
             <h3>About your cards</h3>
             <p className="muted">
               The cards you've chosen may have different meanings depending on
-              their context. Here are some general meanings of the cards you've
-              chosen.
+              their context. Here are some of their more common interpretations.
             </p>
             <ul className="fortune-about-cards__list">
               {chosenCards.map((card, cardIndex) => (

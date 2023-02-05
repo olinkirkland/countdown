@@ -21,6 +21,7 @@ button.fortune-button {
 .popup {
   width: 100%;
   height: 100vh;
+  height: 100%;
   top: 0;
   padding: 2rem;
   position: fixed;
@@ -149,7 +150,7 @@ button.fortune-button {
 
   .fortune-interview__question-group {
     // padding: 1.2rem;
-    margin-bottom: 4rem;
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
     transition: all 0.2s;
@@ -167,9 +168,6 @@ button.fortune-button {
       display: flex;
       flex-direction: column;
       margin-bottom: 1.2rem;
-
-      li {
-      }
     }
   }
 
