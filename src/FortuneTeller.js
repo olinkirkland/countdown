@@ -64,14 +64,34 @@ export default class FortuneTeller {
     const present = this.chosenCards[1];
     const future = this.chosenCards[2];
 
+    const questionsWithAnswers = this.interviewQuestions.filter(
+      (question) => question.choice !== undefined
+    );
+
+    console.log(
+      'Answered questions:',
+      questionsWithAnswers.length,
+      'of',
+      this.interviewQuestions.length
+    );
+
+    questionsWithAnswers.forEach((question) => {
+      console.log(
+        question.text.replace('%%', question.answers[question.choice])
+      );
+    });
+
     const fortuneData = {
-      questions: this.interviewQuestions.map((question) => {
-        return `${question.question} "${question.answers[question.choice]}"`;
+      questions: questionsWithAnswers.map((question) => {
+        return `${question.text.replace(
+          '%%',
+          question.answers[question.choice]
+        )}`;
       }),
       cards: [
-        `The past is ${past.name}.`,
-        `The present is ${present.name}.`,
-        `The future is ${future.name}.`
+        `The past is ${past.name}, which means ${past.meaning}.`,
+        `The present is ${present.name}, which means ${present.meaning}.`,
+        `The future is ${future.name}, which means ${future.meaning}.`
       ]
     };
 
@@ -84,6 +104,12 @@ export default class FortuneTeller {
     });
 
     const fortune = await response.json();
-    return fortune;
+
+    // Prevent the user from seeing their fortune more than once every 24 hours
+    const cooldown = 86400000;
+    // const cooldown = 20000;
+    localStorage.setItem('timeNextFortuneUnlocks', Date.now() + cooldown);
+
+    return fortune; 
   }
 }

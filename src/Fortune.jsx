@@ -3,13 +3,35 @@ import FortuneTeller from './FortuneTeller';
 
 export default function Fortune() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [timeUntilNext, setTimeUntilNext] = useState(0);
+  const [timeUntilNextFortune, setTimeUntilNextFortune] = useState(0);
+  const [formattedTimeUntilNextFortune, setFormattedTimeUntilNextFortune] =
+    useState('...');
   const [fortuneTeller, setFortuneTeller] = useState(null);
   const [interview, setInterview] = useState([]);
   const [step, setStep] = useState(-1);
   const [chosenCards, setChosenCards] = useState([]);
   const [deckMessage, setDeckMessage] = useState(null);
   const [reading, setReading] = useState(null);
+
+  useEffect(() => {
+    const timeNextFortuneUnlocks = localStorage.getItem(
+      'timeNextFortuneUnlocks'
+    );
+
+    if (window.location.hostname === 'localhost' || !timeNextFortuneUnlocks)
+      return;
+
+    setTimeUntilNextFortune(Math.max(0, timeNextFortuneUnlocks - Date.now()));
+    setInterval(() => {
+      setTimeUntilNextFortune((timeUntilNextFortune) =>
+        Math.max(0, timeUntilNextFortune - 1000)
+      );
+    }, 1000);
+  }, []);
+
+  useEffect(() => {
+    setFormattedTimeUntilNextFortune(formatTime(timeUntilNextFortune));
+  }, [timeUntilNextFortune]);
 
   useEffect(() => {
     document.body.style.overflow = isPopupOpen ? 'hidden' : 'auto';
@@ -34,7 +56,7 @@ export default function Fortune() {
             behavior: 'smooth',
             block: 'start'
           });
-      }, 1200);
+      }, 400);
     }
   }, [chosenCards]);
 
@@ -49,6 +71,21 @@ export default function Fortune() {
       });
     }, 100);
   }, [step]);
+
+  useEffect(() => {
+    if (!reading) return;
+    setTimeout(() => {
+      // Scroll where section.fortune-reading is at the top
+      const fortuneAboutCards = document.querySelector(
+        'section.fortune-reading'
+      );
+      if (fortuneAboutCards)
+        fortuneAboutCards.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+    }, 200);
+  }, [reading]);
 
   function onBegin() {
     const f = new FortuneTeller();
@@ -66,33 +103,38 @@ export default function Fortune() {
         className={'popup-overlay ' + (isPopupOpen ? 'active' : '')}
         onClick={() => setIsPopupOpen(false)}
       ></div>
-
       <div className={'popup fortune ' + (isPopupOpen ? 'active' : '')}>
         <button className="btn-close" onClick={() => setIsPopupOpen(false)}>
           <i className="fas fa-times"></i>
         </button>
-
         <div className="fortune__intro">
           <h2>My Fortune</h2>
           <h3>How does it work?</h3>
-          <p>Receive a personal tarot reading using AI.</p>
           <p className="muted">
             First, Answer some questions about how you feel today.
           </p>
-          <p className="muted">Then, reveal three cards.</p>
+          <p className="muted">
+            Shuffle and cut the tarot deck as you wish. Then, reveal three
+            cards.
+          </p>
           <p className="muted">
             The AI will then interpret the cards along with your answers to give
             you a unique reading.
           </p>
 
-          <p className="muted">
-            You can receive a new reading one time every day.
-          </p>
+          {timeUntilNextFortune > 0 && (
+            <div className="please-wait">
+              <p>
+                You can receive another reading in{' '}
+                {formattedTimeUntilNextFortune}.
+              </p>
+            </div>
+          )}
 
           <button
             className="button button--primary"
             onClick={onBegin}
-            disabled={timeUntilNext > 0 || interview.length > 0}
+            disabled={timeUntilNextFortune > 0 || interview.length > 0}
           >
             Begin
           </button>
@@ -138,16 +180,27 @@ export default function Fortune() {
                       </li>
                     ))}
                   </ul>
-                  <button
-                    className="button button--fit button-next"
-                    disabled={interviewQuestion.choice === undefined}
-                    onClick={() => {
-                      setStep(step + 1);
-                    }}
-                  >
-                    Next
-                    <i className="fas fa-arrow-right"></i>
-                  </button>
+                  <div className="row">
+                    <button
+                      className="button button--fit"
+                      onClick={() => {
+                        interviewQuestion.choice = undefined;
+                        setStep(step + 1);
+                      }}
+                    >
+                      Skip
+                    </button>
+                    <button
+                      className="button button-link button--fit"
+                      disabled={interviewQuestion.choice === undefined}
+                      onClick={() => {
+                        setStep(step + 1);
+                      }}
+                    >
+                      Next
+                      <i className="fas fa-arrow-right"></i>
+                    </button>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -321,7 +374,6 @@ export default function Fortune() {
                 setDeckMessage('Analyzing your cards...');
                 setTimeout(async () => {
                   const r = await fortuneTeller.performReading();
-                  console.log(r);
                   setReading(r);
                   setDeckMessage(null);
                 }, 500);
@@ -374,4 +426,29 @@ export default function Fortune() {
       </div>
     </>
   );
+}
+
+function formatTime(milliseconds) {
+  // X seconds ( < 1 minute)
+  // X minutes ( < 1 hour)
+  // X hours and Y minutes ( > 1 hour)
+  // about X hours ( > 2 hours)
+
+  const seconds = Math.floor(milliseconds / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+
+  if (seconds < 60) {
+    return seconds + ' seconds';
+  }
+
+  if (minutes < 60) {
+    return minutes + ' minutes';
+  }
+
+  if (hours < 2) {
+    return hours + ' hours and ' + (minutes % 60) + ' minutes';
+  }
+
+  return 'about ' + hours + ' hours';
 }

@@ -5,8 +5,7 @@ import collectionData from './CollectionData.json';
 import toSemanticDate from './semanticDate';
 import Fortune from './Fortune';
 
-export const SERVER_URL =
-  'https://countdown-backend-production.up.railway.app/';
+export const SERVER_URL = 'https://countdown-backend-production.up.railway.app/';
 // export const SERVER_URL = 'http://127.0.0.1:3001/';
 
 let version2 = false;
@@ -17,7 +16,7 @@ function Main() {
   const countdownPatchReleaseFromTime = new Date(
     '2023-01-01T00:00:00'
   ).valueOf();
-  const patchReleaseTime = new Date('2023-02-06T00:00:00').valueOf();
+  const patchReleaseTime = new Date('2023-02-05T00:00:00').valueOf();
 
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -69,7 +68,7 @@ function Main() {
     );
 
     if (
-      // window.location.hostname === 'localhost' ||
+      window.location.hostname === 'localhost' ||
       secondsUntilPatchRelease <= 0
     ) {
       // Show the 20 week update

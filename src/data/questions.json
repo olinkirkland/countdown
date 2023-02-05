@@ -1,46 +1,65 @@
 [
   {
-    "question": "Which of the following elements do you most relate to today?",
-    "answers": ["Fire", "Water", "Air"]
-  },
-  {
     "question": "What color represents how you feel right now?",
-    "answers": ["Blue", "Yellow", "Red"]
+    "answers": ["Blue", "Yellow", "Red"],
+    "text": "They describe themselves as feeling like the color %%"
   },
   {
-    "question": "How do you feel about the current situation in your life?",
-    "answers": ["Hopeful", "Content", "Uncertain"]
+    "question": "What type of animal do you think best represents your personality today?",
+    "answers": ["Lion", "Wolf", "Dove"],
+    "text": "They chose the animal %% to represent their personality today."
   },
   {
-    "question": "What would you like to focus on today?",
+    "question": "If you had to choose a mantra to describe your current state of mind, what would it be?",
     "answers": [
-      "Peace and contentment",
-      "Growth and progress",
-      "Love and connection"
-    ]
+      "I am strong and capable",
+      "I am open to possibilities",
+      "I am grateful for today"
+    ],
+    "text": "They chose the mantra '%%' to describe their current state of mind."
   },
   {
-    "question": "What best describes your current state of mind?",
-    "answers": ["Calm", "Energized", "Frenetic"]
+    "question": "What type of weather best symbolizes your current emotional state?",
+    "answers": ["Sunny and warm", "Cloudy and cool", "Rainy and humid"],
+    "text": "They described their current emotional state as the type of weather %%."
   },
   {
-    "question": "Which of the following best describes how you're feeling right now?",
-    "answers": ["Inspired", "Motivated", "Burdened"]
+    "question": "If you could choose a symbol to represent your current spiritual journey, what would it be?",
+    "answers": [
+      "An eagle soaring high",
+      "A tree standing tall",
+      "A river flowing freely"
+    ],
+    "text": "They chose the symbol of %% to represent their current spiritual journey."
   },
   {
-    "question": "What do you need the most right now?",
-    "answers": ["Time to reflect", "Time to create", "Time to rest"]
+    "question": "How would you describe yourself in one word?",
+    "answers": ["Brave", "Loving", "Optimistic"],
+    "text": "They described themselves as being %%."
   },
   {
-    "question": "Which of the following do you need to feel balanced today?",
-    "answers": ["Time alone", "Time with others", "Time to explore"]
+    "question": "If you could choose an element to embody your current state of mind, what would it be?",
+    "answers": ["Fire", "Earth", "Air"],
+    "text": "They chose the element %% to embody their current state of mind."
   },
   {
-    "question": "What is your current outlook on life?",
-    "answers": ["Positive", "Neutral", "Negative"]
+    "question": "What type of landscape would you choose to represent your current emotional state?",
+    "answers": ["Mountainous", "Desert", "Coastal"],
+    "text": "They chose the landscape of %% to represent their current emotional state."
   },
   {
-    "question": "What is the first thing that comes to mind when you think of your future?",
-    "answers": ["Hope", "Excitement", "Fear"]
+    "question": "What type of stone do you think best represents your current spiritual journey?",
+    "answers": ["Amethyst", "Obsidian", "Quartz"],
+    "text": "They chose the stone %% to represent their current spiritual journey."
+  },
+  {
+    "question": "If you could choose a color to symbolize your current feelings, what would it be?",
+    "answers": ["Purple", "Green", "Orange"],
+    "text": "They chose the color %% to symbolize their current feelings."
+  },
+  {
+    "question": "If you could pick a bird to represent your current state of mind, what would it be?",
+    "answers": ["Owl", "Parrot", "Hummingbird"],
+    "text": "They chose the bird %% to represent their current state of mind."
   }
 ]
