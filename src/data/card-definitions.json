@@ -1,80 +1,470 @@
 [
-  { "name": "The Fool", "type": "Major Arcana" },
-  { "name": "The Magician", "type": "Major Arcana" },
-  { "name": "The High Priestess", "type": "Major Arcana" },
-  { "name": "The Empress", "type": "Major Arcana" },
-  { "name": "The Emperor", "type": "Major Arcana" },
-  { "name": "The Hierophant", "type": "Major Arcana" },
-  { "name": "The Lovers", "type": "Major Arcana" },
-  { "name": "The Chariot", "type": "Major Arcana" },
-  { "name": "Strength", "type": "Major Arcana" },
-  { "name": "The Hermit", "type": "Major Arcana" },
-  { "name": "Wheel of Fortune", "type": "Major Arcana" },
-  { "name": "Justice", "type": "Major Arcana" },
-  { "name": "The Hanged Man", "type": "Major Arcana" },
-  { "name": "Death", "type": "Major Arcana" },
-  { "name": "Temperance", "type": "Major Arcana" },
-  { "name": "The Devil", "type": "Major Arcana" },
-  { "name": "The Tower", "type": "Major Arcana" },
-  { "name": "The Star", "type": "Major Arcana" },
-  { "name": "The Moon", "type": "Major Arcana" },
-  { "name": "The Sun", "type": "Major Arcana" },
-  { "name": "Judgement", "type": "Major Arcana" },
-  { "name": "The World", "type": "Major Arcana" },
-  { "name": "Ace of Wands", "type": "Minor Arcana" },
-  { "name": "Two of Wands", "type": "Minor Arcana" },
-  { "name": "Three of Wands", "type": "Minor Arcana" },
-  { "name": "Four of Wands", "type": "Minor Arcana" },
-  { "name": "Five of Wands", "type": "Minor Arcana" },
-  { "name": "Six of Wands", "type": "Minor Arcana" },
-  { "name": "Seven of Wands", "type": "Minor Arcana" },
-  { "name": "Eight of Wands", "type": "Minor Arcana" },
-  { "name": "Nine of Wands", "type": "Minor Arcana" },
-  { "name": "Ten of Wands", "type": "Minor Arcana" },
-  { "name": "Page of Wands", "type": "Minor Arcana" },
-  { "name": "Knight of Wands", "type": "Minor Arcana" },
-  { "name": "Queen of Wands", "type": "Minor Arcana" },
-  { "name": "King of Wands", "type": "Minor Arcana" },
-  { "name": "Ace of Pentacles", "type": "Minor Arcana" },
-  { "name": "Two of Pentacles", "type": "Minor Arcana" },
-  { "name": "Three of Pentacles", "type": "Minor Arcana" },
-  { "name": "Four of Pentacles", "type": "Minor Arcana" },
-  { "name": "Five of Pentacles", "type": "Minor Arcana" },
-  { "name": "Six of Pentacles", "type": "Minor Arcana" },
-  { "name": "Seven of Pentacles", "type": "Minor Arcana" },
-  { "name": "Eight of Pentacles", "type": "Minor Arcana" },
-  { "name": "Nine of Pentacles", "type": "Minor Arcana" },
-  { "name": "Ten of Pentacles", "type": "Minor Arcana" },
-  { "name": "Page of Pentacles", "type": "Minor Arcana" },
-  { "name": "Knight of Pentacles", "type": "Minor Arcana" },
-  { "name": "Queen of Pentacles", "type": "Minor Arcana" },
-  { "name": "King of Pentacles", "type": "Minor Arcana" },
-  { "name": "Ace of Swords", "type": "Minor Arcana" },
-  { "name": "Two of Swords", "type": "Minor Arcana" },
-  { "name": "Three of Swords", "type": "Minor Arcana" },
-  { "name": "Four of Swords", "type": "Minor Arcana" },
-  { "name": "Five of Swords", "type": "Minor Arcana" },
-  { "name": "Six of Swords", "type": "Minor Arcana" },
-  { "name": "Seven of Swords", "type": "Minor Arcana" },
-  { "name": "Eight of Swords", "type": "Minor Arcana" },
-  { "name": "Nine of Swords", "type": "Minor Arcana" },
-  { "name": "Ten of Swords", "type": "Minor Arcana" },
-  { "name": "Page of Swords", "type": "Minor Arcana" },
-  { "name": "Knight of Swords", "type": "Minor Arcana" },
-  { "name": "Queen of Swords", "type": "Minor Arcana" },
-  { "name": "King of Swords", "type": "Minor Arcana" },
-  { "name": "Ace of Cups", "type": "Minor Arcana" },
-  { "name": "Two of Cups", "type": "Minor Arcana" },
-  { "name": "Three of Cups", "type": "Minor Arcana" },
-  { "name": "Four of Cups", "type": "Minor Arcana" },
-  { "name": "Five of Cups", "type": "Minor Arcana" },
-  { "name": "Six of Cups", "type": "Minor Arcana" },
-  { "name": "Seven of Cups", "type": "Minor Arcana" },
-  { "name": "Eight of Cups", "type": "Minor Arcana" },
-  { "name": "Nine of Cups", "type": "Minor Arcana" },
-  { "name": "Ten of Cups", "type": "Minor Arcana" },
-  { "name": "Page of Cups", "type": "Minor Arcana" },
-  { "name": "Knight of Cups", "type": "Minor Arcana" },
-  { "name": "Queen of Cups", "type": "Minor Arcana" },
-  { "name": "King of Cups", "type": "Minor Arcana" }
+  {
+    "name": "The Fool",
+    "type": "Major Arcana",
+    "meaning": "The Fool indicates new beginnings, taking risks, and trusting your intuition.",
+    "image": "fool"
+  },
+  {
+    "name": "The Magician",
+    "type": "Major Arcana",
+    "meaning": "The Magician card can symbolize a person who is skilled with their hands, as well as someone who is able to manifest their dreams and desires into reality.",
+    "image": "magician"
+  },
+  {
+    "name": "The High Priestess",
+    "type": "Major Arcana",
+    "meaning": "The High Priestess card is associated with mystery and knowledge. It symbolizes the ability to look beyond the surface and into the deeper aspects of life.",
+    "image": "priestess"
+  },
+  {
+    "name": "The Empress",
+    "type": "Major Arcana",
+    "meaning": "The Empress card represents abundance, fertility, and motherhood. It is a card of nurturing and growth.",
+    "image": "empress"
+  },
+  {
+    "name": "The Emperor",
+    "type": "Major Arcana",
+    "meaning": "The Emperor card is associated with structure, stability, and the power of authority. It is a card of discipline and control.",
+    "image": "emperor"
+  },
+  {
+    "name": "The Hierophant",
+    "type": "Major Arcana",
+    "meaning": "The Hierophant card is associated with tradition, conformity, and institutionalized religion. It is a card of conformity and order.",
+    "image": "hierophant"
+  },
+  {
+    "name": "The Lovers",
+    "type": "Major Arcana",
+    "meaning": "The Lovers card is associated with relationships, connection, and choices. It is a card of harmony and balance. ",
+    "image": "lovers"
+  },
+  {
+    "name": "The Chariot",
+    "type": "Major Arcana",
+    "meaning": "The Chariot card is associated with determination, willpower, and victory. It is a card of ambition and drive.",
+    "image": "chariot"
+  },
+  {
+    "name": "Strength",
+    "type": "Major Arcana",
+    "meaning": "Strength is associated with courage, inner strength, and self-confidence. It is a card of inner power and resilience. ",
+    "image": "strength"
+  },
+  {
+    "name": "The Hermit",
+    "type": "Major Arcana",
+    "meaning": "The Hermit card is associated with introspection, meditation, and seeking knowledge. It is a card of inner wisdom and enlightenment.",
+    "image": "hermit"
+  },
+  {
+    "name": "Wheel of Fortune",
+    "type": "Major Arcana",
+    "meaning": "The Wheel of Fortune card is associated with luck, fate, and cycles. It is a card of destiny and chance. ",
+    "image": "wheel"
+  },
+  {
+    "name": "Justice",
+    "type": "Major Arcana",
+    "meaning": "Justice is associated with balance, fairness, and truth. It is a card of justice and equality. ",
+    "image": "justice"
+  },
+  {
+    "name": "The Hanged Man",
+    "type": "Major Arcana",
+    "meaning": "The Hanged Man card is associated with sacrifice, surrender, and letting go. It is a card of release and acceptance. ",
+    "image": "hanged-man"
+  },
+  {
+    "name": "Death",
+    "type": "Major Arcana",
+    "meaning": "Death is associated with transformation, endings, and rebirth. It is a card of transition and change. ",
+    "image": "death"
+  },
+  {
+    "name": "Temperance",
+    "type": "Major Arcana",
+    "meaning": "Temperance is associated with moderation, balance, and harmony. It is a card of patience and moderation. ",
+    "image": "temperance"
+  },
+  {
+    "name": "The Devil",
+    "type": "Major Arcana",
+    "meaning": "The Devil card is associated with temptation, materialism, and addiction. It is a card of caution and restraint. ",
+    "image": "devil"
+  },
+  {
+    "name": "The Tower",
+    "type": "Major Arcana",
+    "meaning": "The Tower card is associated with chaos, destruction, and sudden change. It is a card of upheaval and disruption. ",
+    "image": "tower"
+  },
+  {
+    "name": "The Star",
+    "type": "Major Arcana",
+    "meaning": "The Star card is associated with hope, renewal, and optimism. It is a card of faith and guidance. ",
+    "image": "star"
+  },
+  {
+    "name": "The Moon",
+    "type": "Major Arcana",
+    "meaning": "The Moon card is associated with intuition, dreams, and subconscious. It is a card of mystery and intuition. ",
+    "image": "moon"
+  },
+  {
+    "name": "The Sun",
+    "type": "Major Arcana",
+    "meaning": "The Sun card is associated with joy, success, and abundance. It is a card of optimism and happiness. ",
+    "image": "sun"
+  },
+  {
+    "name": "Judgement",
+    "type": "Major Arcana",
+    "meaning": "Judgement is associated with rebirth, renewal, and transformation. It is a card of reflection and awakening. ",
+    "image": "judgement"
+  },
+  {
+    "name": "The World",
+    "type": "Major Arcana",
+    "meaning": "The World card is associated with completion, wholeness, and harmony. It is a card of fulfillment and contentment. ",
+    "image": "world"
+  },
+  {
+    "name": "Ace of Wands",
+    "type": "Minor Arcana",
+    "meaning": "The Ace of Wands is associated with creativity, passion, and new beginnings. It is a card of potential and opportunity. ",
+    "image": "wands"
+  },
+  {
+    "name": "Two of Wands",
+    "type": "Minor Arcana",
+    "meaning": "The Two of Wands is associated with planning, decision making, and exploration. It is a card of contemplation and exploration. ",
+    "image": "wands"
+  },
+  {
+    "name": "Three of Wands",
+    "type": "Minor Arcana",
+    "meaning": "The Three of Wands is associated with expansion, growth, and vision. It is a card of ambition and exploration. ",
+    "image": "wands"
+  },
+  {
+    "name": "Four of Wands",
+    "type": "Minor Arcana",
+    "meaning": "The Four of Wands is associated with celebration, harmony, and stability. It is a card of joy and joyous occasions. ",
+    "image": "wands"
+  },
+  {
+    "name": "Five of Wands",
+    "type": "Minor Arcana",
+    "meaning": "The Five of Wands is associated with competition, conflict, and opposition. It is a card of challenge and struggle. ",
+    "image": "wands"
+  },
+  {
+    "name": "Six of Wands",
+    "type": "Minor Arcana",
+    "meaning": "The Six of Wands is associated with victory, success, and triumph. It is a card of triumph and celebration. ",
+    "image": "wands"
+  },
+  {
+    "name": "Seven of Wands",
+    "type": "Minor Arcana",
+    "meaning": "The Seven of Wands is associated with protection, strength, and courage. It is a card of courage and determination. ",
+    "image": "wands"
+  },
+  {
+    "name": "Eight of Wands",
+    "type": "Minor Arcana",
+    "meaning": "The Eight of Wands is associated with movement, travel, and quick action. It is a card of swiftness and speed. ",
+    "image": "wands"
+  },
+  {
+    "name": "Nine of Wands",
+    "type": "Minor Arcana",
+    "meaning": "The Nine of Wands is associated with resilience, perseverance, and inner strength. It is a card of inner power and strength. ",
+    "image": "wands"
+  },
+  {
+    "name": "Ten of Wands",
+    "type": "Minor Arcana",
+    "meaning": "The Ten of Wands is associated with burden, responsibility, and struggle. It is a card of hard work and dedication. ",
+    "image": "wands"
+  },
+  {
+    "name": "Page of Wands",
+    "type": "Minor Arcana",
+    "meaning": "The Page of Wands is associated with enthusiasm, optimism, and new ideas. It is a card of new beginnings and exploration. ",
+    "image": "wands"
+  },
+  {
+    "name": "Knight of Wands",
+    "type": "Minor Arcana",
+    "meaning": "The Knight of Wands is associated with action, adventure, and movement. It is a card of determination and courage. ",
+    "image": "wands"
+  },
+  {
+    "name": "Queen of Wands",
+    "type": "Minor Arcana",
+    "meaning": "The Queen of Wands is associated with creativity, fertility, and nurturing. It is a card of creativity and abundance. ",
+    "image": "wands"
+  },
+  {
+    "name": "King of Wands",
+    "type": "Minor Arcana",
+    "meaning": "The King of Wands is associated with leadership, strength, and authority. It is a card of power and authority. ",
+    "image": "wands"
+  },
+  {
+    "name": "Ace of Pentacles",
+    "type": "Minor Arcana",
+    "meaning": "The Ace of Pentacles is associated with material wealth, abundance, and prosperity. It is a card of wealth and abundance. ",
+    "image": "pentacles"
+  },
+  {
+    "name": "Two of Pentacles",
+    "type": "Minor Arcana",
+    "meaning": "The Two of Pentacles is associated with balance, adaptability, and flexibility. It is a card of balance and harmony. ",
+    "image": "pentacles"
+  },
+  {
+    "name": "Three of Pentacles",
+    "type": "Minor Arcana",
+    "meaning": "The Three of Pentacles is associated with teamwork, collaboration, and cooperation. It is a card of collaboration and cooperation. ",
+    "image": "pentacles"
+  },
+  {
+    "name": "Four of Pentacles",
+    "type": "Minor Arcana",
+    "meaning": "The Four of Pentacles is associated with security, stability, and materialism. It is a card of stability and security. ",
+    "image": "pentacles"
+  },
+  {
+    "name": "Five of Pentacles",
+    "type": "Minor Arcana",
+    "meaning": "The Five of Pentacles is associated with loss, poverty, and hard times. It is a card of hardship and struggle. ",
+    "image": "pentacles"
+  },
+  {
+    "name": "Six of Pentacles",
+    "type": "Minor Arcana",
+    "meaning": "This card represents generosity, sharing, and abundance. It can also represent a feeling of being taken care of and supported.",
+    "image": "pentacles"
+  },
+  {
+    "name": "Seven of Pentacles",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes hard work and the rewards it brings. It can also represent patience and careful planning.",
+    "image": "pentacles"
+  },
+  {
+    "name": "Eight of Pentacles",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes dedication, focus, and skill. It can also represent a desire to perfect one's talents.",
+    "image": "pentacles"
+  },
+  {
+    "name": "Nine of Pentacles",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes security, comfort, and luxury. It can also represent a feeling of independence and self-sufficiency.",
+    "image": "pentacles"
+  },
+  {
+    "name": "Ten of Pentacles",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes wealth, stability, and long-term success. It can also represent family, tradition, and legacy.",
+    "image": "pentacles"
+  },
+  {
+    "name": "Page of Pentacles",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes dedication, hard work, and focus. It can also represent a desire to learn new things and take on new challenges.",
+    "image": "pentacles"
+  },
+  {
+    "name": "Knight of Pentacles",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes focus, reliability, and a sense of responsibility. It can also represent a willingness to take on difficult tasks.",
+    "image": "pentacles"
+  },
+  {
+    "name": "Queen of Pentacles",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes abundance, nurturing, and comfort. It can also represent a strong sense of self-awareness and an appreciation for the finer things in life.",
+    "image": "pentacles"
+  },
+  {
+    "name": "King of Pentacles",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes stability, wealth, and success. It can also represent a sense of responsibility and a desire to provide for others.",
+    "image": "pentacles"
+  },
+  {
+    "name": "Ace of Swords",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes strength, courage, and truth. It can also represent a need to stand up for oneself and take action.",
+    "image": "sword"
+  },
+  {
+    "name": "Two of Swords",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes balance, harmony, and choices. It can also represent a need to make a difficult decision or to stay in the center of two opposing forces.",
+    "image": "sword"
+  },
+  {
+    "name": "Three of Swords",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes heartache, sorrow, and pain. It can also represent a need to accept the truth and to move on from a difficult situation.",
+    "image": "sword"
+  },
+  {
+    "name": "Four of Swords",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes a need for rest, contemplation, and healing. It can also represent a need to take a break and to recharge one's energy.",
+    "image": "sword"
+  },
+  {
+    "name": "Five of Swords",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes defeat, discord, and loss. It can also represent a need to accept the outcome of a situation and to move on.",
+    "image": "sword"
+  },
+  {
+    "name": "Six of Swords",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes transition, progress, and healing. It can also represent a need to move away from a difficult situation and towards a better one.",
+    "image": "sword"
+  },
+  {
+    "name": "Seven of Swords",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes cunning, deception, and secrecy. It can also represent a need to be careful and to think strategically.",
+    "image": "sword"
+  },
+  {
+    "name": "Eight of Swords",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes restriction, limitation, and confusion. It can also represent a need to take a step back and to look at the situation from a new perspective.",
+    "image": "sword"
+  },
+  {
+    "name": "Nine of Swords",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes fear, anxiety, and worry. It can also represent a need to confront one's fears and to find a way to move beyond them.",
+    "image": "sword"
+  },
+  {
+    "name": "Ten of Swords",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes defeat, despair, and endings. It can also represent a need to accept the end of a situation and to move on to something new.",
+    "image": "sword"
+  },
+  {
+    "name": "Page of Swords",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes curiosity, intelligence, and awareness. It can also represent the need to think before acting and to be careful with one's words.",
+    "image": "sword"
+  },
+  {
+    "name": "Knight of Swords",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes determination, ambition, and courage. It can also represent a need to take action and to stand up for what is right.",
+    "image": "sword"
+  },
+  {
+    "name": "Queen of Swords",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes intelligence, insight, and communication. It can also represent a need to think carefully before speaking and to be honest with oneself and others.",
+    "image": "sword"
+  },
+  {
+    "name": "King of Swords",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes logic, authority, and justice. It can also represent a need to be fair and impartial and to use one's intellect to make decisions.",
+    "image": "sword"
+  },
+  {
+    "name": "Ace of Cups",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes love, emotion, and spiritual fulfillment. It can also represent a need to open one's heart and to embrace the beauty of life.",
+    "image": "sword"
+  },
+  {
+    "name": "Two of Cups",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes balance, harmony, and connection. It can also represent a need to share feelings and to nurture a relationship.",
+    "image": "cups"
+  },
+  {
+    "name": "Three of Cups",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes celebration, joy, and pleasure. It can also represent a need to take time to enjoy life and to appreciate the good times.",
+    "image": "cups"
+  },
+  {
+    "name": "Four of Cups",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes boredom, complacency, and apathy. It can also represent a need to look for opportunities and to be open to new experiences.",
+    "image": "cups"
+  },
+  {
+    "name": "Five of Cups",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes sadness, loss, and regret. It can also represent a need to accept the past and to move on from it.",
+    "image": "cups"
+  },
+  {
+    "name": "Six of Cups",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes nostalgia, innocence, and childhood. It can also represent a need to look to the past for guidance and to remember the good times.",
+    "image": "cups"
+  },
+  {
+    "name": "Seven of Cups",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes dreams, possibilities, and temptation. It can also represent a need to be careful with one's choices and to make sure they align with one's goals.",
+    "image": "cups"
+  },
+  {
+    "name": "Eight of Cups",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes a need to let go, to move on, and to find a new path. It can also represent a need to look inward and to find the courage to start anew.",
+    "image": "cups"
+  },
+  {
+    "name": "Nine of Cups",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes contentment, satisfaction, and joy. It can also represent a need to savor the moment and to appreciate what one has.",
+    "image": "cups"
+  },
+  {
+    "name": "Ten of Cups",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes happiness, fulfillment, and love. It can also represent a need to accept the beauty of life and to enjoy the journey.",
+    "image": "cups"
+  },
+  {
+    "name": "Page of Cups",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes imagination, creativity, and emotion. It can also represent a need to explore one's feelings and to be open to new experiences.",
+    "image": "cups"
+  },
+  {
+    "name": "Knight of Cups",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes passion, romance, and adventure. It can also represent a need to follow one's heart and to explore the unknown.",
+    "image": "cups"
+  },
+  {
+    "name": "Queen of Cups",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes compassion, understanding, and empathy. It can also represent a need to be kind and to offer support to others.",
+    "image": "cups"
+  },
+  {
+    "name": "King of Cups",
+    "type": "Minor Arcana",
+    "meaning": "This card symbolizes wisdom, intuition, and emotional balance. It can also represent a need to trust one's instincts and to be guided by them.",
+    "image": "cups"
+  }
 ]

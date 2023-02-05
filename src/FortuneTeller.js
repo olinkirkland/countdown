@@ -1,5 +1,6 @@
 import cardDefinitions from './data/card-definitions.json';
 import questionDefinitions from './data/questions.json';
+import { SERVER_URL } from './Main';
 
 export default class FortuneTeller {
   constructor() {
@@ -58,7 +59,31 @@ export default class FortuneTeller {
     return this.chosenCards;
   }
 
-  interpret() {
-    prompt();
+  async performReading() {
+    const past = this.chosenCards[0];
+    const present = this.chosenCards[1];
+    const future = this.chosenCards[2];
+
+    const fortuneData = {
+      questions: this.interviewQuestions.map((question) => {
+        return `${question.question} "${question.answers[question.choice]}"`;
+      }),
+      cards: [
+        `The past is ${past.name}.`,
+        `The present is ${present.name}.`,
+        `The future is ${future.name}.`
+      ]
+    };
+
+    const response = await fetch(SERVER_URL + 'fortune?password=miffy', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(fortuneData)
+    });
+
+    const fortune = await response.json();
+    return fortune;
   }
 }

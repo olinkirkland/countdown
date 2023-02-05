@@ -9,37 +9,52 @@ export default function Fortune() {
   const [step, setStep] = useState(-1);
   const [chosenCards, setChosenCards] = useState([]);
   const [deckMessage, setDeckMessage] = useState(null);
+  const [reading, setReading] = useState(null);
 
   useEffect(() => {
     document.body.style.overflow = isPopupOpen ? 'hidden' : 'auto';
   }, [isPopupOpen]);
 
   useEffect(() => {
-    console.log(interview);
-  }, [interview]);
-
-  useEffect(() => {
+    if (deckMessage === 'Analyzing your cards...') return;
     if (deckMessage) setTimeout(() => setDeckMessage(null), 2000);
   }, [deckMessage]);
+
+  useEffect(() => {
+    if (chosenCards.length === 0 || step !== interview.length + 1) return;
+    if (chosenCards.every((card) => card.revealed)) {
+      setStep((step) => step + 0.5);
+      setTimeout(() => {
+        // Scroll where section.fortune-about-cards is at the top
+        const fortuneAboutCards = document.querySelector(
+          'section.fortune-about-cards'
+        );
+        if (fortuneAboutCards)
+          fortuneAboutCards.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+      }, 1200);
+    }
+  }, [chosenCards]);
+
+  useEffect(() => {
+    if (step % 1 !== 0) return;
+    setTimeout(() => {
+      // Smooth scroll to bottom of the popup for firefox
+      const popup = document.querySelector('.popup.fortune');
+      popup.scrollTo({
+        top: popup.scrollHeight,
+        behavior: 'smooth'
+      });
+    }, 100);
+  }, [step]);
 
   function onBegin() {
     const f = new FortuneTeller();
     setFortuneTeller(f);
     setInterview(f.interviewQuestions);
     setStep(0);
-    scrollToBottom();
-  }
-
-  function scrollToBottom() {
-    setTimeout(() => {
-      // Smooth scroll to bottom of the popup for firefox
-      const popup = document.querySelector('.popup.fortune');
-      // popup.scrollTop = popup.scrollHeight;
-      popup.scrollTo({
-        top: popup.scrollHeight,
-        behavior: 'smooth'
-      });
-    }, 100);
   }
 
   return (
@@ -128,7 +143,6 @@ export default function Fortune() {
                     disabled={interviewQuestion.choice === undefined}
                     onClick={() => {
                       setStep(step + 1);
-                      scrollToBottom();
                     }}
                   >
                     Next
@@ -138,6 +152,13 @@ export default function Fortune() {
               ))}
             </ul>
           </section>
+        )}
+
+        {deckMessage && (
+          <div className="deck-message">
+            <img src="images/cards.png" alt="fortune" />
+            {deckMessage}
+          </div>
         )}
 
         {step >= interview.length && (
@@ -178,19 +199,11 @@ export default function Fortune() {
               Cut the deck
             </button>
 
-            {deckMessage && (
-              <div className="deck-message">
-                <img src="images/cards.png" alt="fortune" />
-                {deckMessage}
-              </div>
-            )}
-
             <button
               className="button button--primary"
               onClick={() => {
                 setStep((step) => step + 1);
                 setChosenCards(fortuneTeller.drawCards());
-                scrollToBottom();
               }}
             >
               Reveal the cards
@@ -208,25 +221,39 @@ export default function Fortune() {
                   className={
                     'fortune-cards__card' + (card.revealed ? ' revealed' : '')
                   }
-                  onClick={() => {
-                    setChosenCards((chosenCards) => {
-                      chosenCards[cardIndex].revealed = true;
-                      return chosenCards;
-                    });
-                  }}
                 >
                   <div className="fortune-cards__card__front">
                     <img
                       src={
-                        'images/tarot/' +
+                        'images/tarot/art/' +
                         (card.image ? card.image : 'sword') +
                         '.png'
                       }
                       alt="fortune"
                     />
+                    <div className="fortune-cards__card__front__content">
+                      <img
+                        className="card-icon"
+                        src={
+                          card.type.includes('Major')
+                            ? 'images/tarot/icon-major.png'
+                            : 'images/tarot/icon-minor.png'
+                        }
+                        alt="fortune"
+                      />
+                      <span>{card.name}</span>
+                    </div>
                   </div>
 
-                  <div className="fortune-cards__card__back">
+                  <div
+                    className="fortune-cards__card__back"
+                    onClick={() => {
+                      setChosenCards((chosenCards) => {
+                        chosenCards[cardIndex].revealed = true;
+                        return chosenCards.slice();
+                      });
+                    }}
+                  >
                     <img
                       src={
                         card.type.includes('Major')
@@ -237,6 +264,7 @@ export default function Fortune() {
                     />
                     <div className="fortune-cards__card__back__type">
                       <img
+                        className="card-icon"
                         src={
                           card.type.includes('Major')
                             ? 'images/tarot/icon-major.png'
@@ -249,6 +277,97 @@ export default function Fortune() {
                   </div>
                 </li>
               ))}
+            </div>
+          </section>
+        )}
+        {step >= interview.length + 1.5 && (
+          <section className="fortune-about-cards">
+            <h3>About your cards</h3>
+            <p className="muted">
+              The cards you've chosen may have different meanings depending on
+              their context. Here are some general meanings of the cards you've
+              chosen.
+            </p>
+            <ul className="fortune-about-cards__list">
+              {chosenCards.map((card, cardIndex) => (
+                <li key={cardIndex}>
+                  <img
+                    src={
+                      'images/tarot/art/' +
+                      (card.image ? card.image : 'sword') +
+                      '.png'
+                    }
+                    alt="fortune"
+                  />
+
+                  <div className="fortune-about-cards__list__content">
+                    <h3>
+                      {card.name}
+                      <span className="muted"> • {card.type}</span>
+                    </h3>
+                    <p>{card.meaning}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+            <h3>Ready to receive your reading?</h3>
+
+            <button
+              className="button button--primary"
+              disabled={!!reading}
+              onClick={async () => {
+                setReading(-1);
+                setDeckMessage('Analyzing your cards...');
+                setTimeout(async () => {
+                  const r = await fortuneTeller.performReading();
+                  console.log(r);
+                  setReading(r);
+                  setDeckMessage(null);
+                }, 500);
+              }}
+            >
+              Perform my reading now
+            </button>
+
+            <p className="muted">
+              * By tapping the button, both your selected cards and the answers
+              to your questions from the beginning will be analyzed by the GPT-3
+              autoregressive language model. It will take a moment for the AI to
+              interpret your cards.
+            </p>
+          </section>
+        )}
+
+        {reading !== null && reading !== -1 && (
+          <section className="fortune-reading">
+            <h3>Your reading</h3>
+            {reading.split('\n').map((line, lineIndex) => (
+              <p key={lineIndex}>{line}</p>
+            ))}
+
+            <div className="share-buttons">
+              {navigator.share && (
+                <button
+                  className="button button--fit"
+                  onClick={() => {
+                    navigator.share(reading);
+                  }}
+                >
+                  <i className="fas fa-share-alt"></i>
+                  Share
+                </button>
+              )}
+
+              <button
+                className="button button--fit"
+                onClick={() => {
+                  navigator.clipboard.writeText(reading);
+                }}
+              >
+                <i className="fas fa-copy"></i>
+                Copy
+              </button>
             </div>
           </section>
         )}

@@ -5,16 +5,19 @@ import collectionData from './CollectionData.json';
 import toSemanticDate from './semanticDate';
 import Fortune from './Fortune';
 
-const SERVER_URL = 'https://countdown-backend-production.up.railway.app/';
-// const SERVER_URL = 'http://127.0.0.1:3001/';
+export const SERVER_URL =
+  'https://countdown-backend-production.up.railway.app/';
+// export const SERVER_URL = 'http://127.0.0.1:3001/';
 
 let version2 = false;
 let isAuthenticated = false;
 
 function Main() {
   const targetTime = new Date('2023-03-23T19:30:00');
-  const countdownPatchReleaseFromTime = new Date('2023-01-01T00:00:00');
-  const patchReleaseTime = new Date('2023-03-01T00:00:00');
+  const countdownPatchReleaseFromTime = new Date(
+    '2023-01-01T00:00:00'
+  ).valueOf();
+  const patchReleaseTime = new Date('2023-02-06T00:00:00').valueOf();
 
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -22,7 +25,7 @@ function Main() {
   const [days, setDays] = useState(0);
   const [weeks, setWeeks] = useState(0);
 
-  const [secondsUntilPatchRelease, setSecondsUntilPatchRelease] = useState(0);
+  const [secondsUntilPatchRelease, setSecondsUntilPatchRelease] = useState(99);
   const [percentUntilUpdate, setPercentUntilUpdate] = useState(0);
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(true);
@@ -62,11 +65,11 @@ function Main() {
 
     // Update the seconds until patchReleaseTime
     setSecondsUntilPatchRelease(
-      Math.floor((patchReleaseTime.valueOf() - new Date().valueOf()) / 1000)
+      Math.floor((patchReleaseTime - new Date().valueOf()) / 1000)
     );
 
     if (
-      window.location.hostname === 'localhost' ||
+      // window.location.hostname === 'localhost' ||
       secondsUntilPatchRelease <= 0
     ) {
       // Show the 20 week update
@@ -76,8 +79,7 @@ function Main() {
 
   useEffect(() => {
     const totalSeconds =
-      (patchReleaseTime.valueOf() - countdownPatchReleaseFromTime.valueOf()) /
-      1000;
+      (patchReleaseTime - countdownPatchReleaseFromTime) / 1000;
 
     const percent = Math.floor(
       ((totalSeconds - secondsUntilPatchRelease) / totalSeconds) * 100
