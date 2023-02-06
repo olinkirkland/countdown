@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import FortuneTeller from './FortuneTeller';
+import React, { useEffect, useState } from "react";
+import FortuneTeller from "./FortuneTeller";
 
 export default function Fortune() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [timeUntilNextFortune, setTimeUntilNextFortune] = useState(0);
-  const [formattedTimeUntilNextFortune, setFormattedTimeUntilNextFortune] =
-    useState('...');
   const [fortuneTeller, setFortuneTeller] = useState(null);
   const [interview, setInterview] = useState([]);
   const [step, setStep] = useState(-1);
@@ -14,31 +11,11 @@ export default function Fortune() {
   const [reading, setReading] = useState(null);
 
   useEffect(() => {
-    const timeNextFortuneUnlocks = localStorage.getItem(
-      'timeNextFortuneUnlocks'
-    );
-
-    if (window.location.hostname === 'localhost' || !timeNextFortuneUnlocks)
-      return;
-
-    setTimeUntilNextFortune(Math.max(0, timeNextFortuneUnlocks - Date.now()));
-    setInterval(() => {
-      setTimeUntilNextFortune((timeUntilNextFortune) =>
-        Math.max(0, timeUntilNextFortune - 1000)
-      );
-    }, 1000);
-  }, []);
-
-  useEffect(() => {
-    setFormattedTimeUntilNextFortune(formatTime(timeUntilNextFortune));
-  }, [timeUntilNextFortune]);
-
-  useEffect(() => {
-    document.body.style.overflow = isPopupOpen ? 'hidden' : 'auto';
+    document.body.style.overflow = isPopupOpen ? "hidden" : "auto";
   }, [isPopupOpen]);
 
   useEffect(() => {
-    if (deckMessage === 'Analyzing your cards...') return;
+    if (deckMessage === "Analyzing your cards...") return;
     if (deckMessage) setTimeout(() => setDeckMessage(null), 2000);
   }, [deckMessage]);
 
@@ -49,12 +26,12 @@ export default function Fortune() {
       setTimeout(() => {
         // Scroll where section.fortune-about-cards is at the top
         const fortuneAboutCards = document.querySelector(
-          'section.fortune-about-cards'
+          "section.fortune-about-cards"
         );
         if (fortuneAboutCards)
           fortuneAboutCards.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
+            behavior: "smooth",
+            block: "start",
           });
       }, 2000);
     }
@@ -64,10 +41,10 @@ export default function Fortune() {
     if (step % 1 !== 0) return;
     setTimeout(() => {
       // Smooth scroll to bottom of the popup for firefox
-      const popup = document.querySelector('.popup.fortune');
+      const popup = document.querySelector(".popup.fortune");
       popup.scrollTo({
         top: popup.scrollHeight,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }, 100);
   }, [step]);
@@ -77,12 +54,12 @@ export default function Fortune() {
     setTimeout(() => {
       // Scroll where section.fortune-reading is at the top
       const fortuneAboutCards = document.querySelector(
-        'section.fortune-reading'
+        "section.fortune-reading"
       );
       if (fortuneAboutCards)
         fortuneAboutCards.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
+          behavior: "smooth",
+          block: "start",
         });
     }, 200);
   }, [reading]);
@@ -100,10 +77,10 @@ export default function Fortune() {
         <img src="images/fortune.png" alt="fortune" />
       </button>
       <div
-        className={'popup-overlay ' + (isPopupOpen ? 'active' : '')}
+        className={"popup-overlay " + (isPopupOpen ? "active" : "")}
         onClick={() => setIsPopupOpen(false)}
       ></div>
-      <div className={'popup fortune ' + (isPopupOpen ? 'active' : '')}>
+      <div className={"popup fortune " + (isPopupOpen ? "active" : "")}>
         <button className="btn-close" onClick={() => setIsPopupOpen(false)}>
           <i className="fas fa-times"></i>
         </button>
@@ -122,22 +99,10 @@ export default function Fortune() {
             you a unique reading.
           </p>
 
-          {timeUntilNextFortune > 0 && (
-            <div className="please-wait">
-              <p>
-                You can receive another reading in{' '}
-                {formattedTimeUntilNextFortune}.
-              </p>
-            </div>
-          )}
-
-          <button
-            className="button button--primary"
-            onClick={onBegin}
-            disabled={timeUntilNextFortune > 0 || interview.length > 0}
-          >
-            Begin
-          </button>
+          <TimeUntilNextFortune
+            onBegin={onBegin}
+            disabled={interview.length > 0}
+          />
         </div>
 
         {interview.length > 0 && (
@@ -146,10 +111,10 @@ export default function Fortune() {
               {interview.map((interviewQuestion, questionIndex) => (
                 <li
                   className={
-                    'fortune-interview__question-group' +
-                    (questionIndex === step ? ' active' : '')
+                    "fortune-interview__question-group" +
+                    (questionIndex === step ? " active" : "")
                   }
-                  style={questionIndex <= step ? {} : { display: 'none' }}
+                  style={questionIndex <= step ? {} : { display: "none" }}
                   key={questionIndex}
                 >
                   <h3 className="fortune-interview__question">
@@ -160,10 +125,10 @@ export default function Fortune() {
                       <li key={answerIndex}>
                         <button
                           className={
-                            'button' +
+                            "button" +
                             (interviewQuestion.choice === answerIndex
-                              ? ' button--primary'
-                              : '')
+                              ? " button--primary"
+                              : "")
                           }
                           onClick={() => {
                             setInterview((interview) => {
@@ -217,7 +182,7 @@ export default function Fortune() {
         {step >= interview.length && (
           <section
             className={
-              'fortune-deck' + (step === interview.length ? ' active' : '')
+              "fortune-deck" + (step === interview.length ? " active" : "")
             }
           >
             <h3>Prepare the deck</h3>
@@ -235,7 +200,7 @@ export default function Fortune() {
               className="button button"
               onClick={() => {
                 fortuneTeller.shuffleDeck();
-                setDeckMessage('Shuffling the deck...');
+                setDeckMessage("Shuffling the deck...");
               }}
             >
               <i className="fas fa-random"></i>
@@ -245,7 +210,7 @@ export default function Fortune() {
               className="button button"
               onClick={() => {
                 fortuneTeller.cutDeck();
-                setDeckMessage('Cutting the deck...');
+                setDeckMessage("Cutting the deck...");
               }}
             >
               <i className="fas fa-random"></i>
@@ -272,15 +237,15 @@ export default function Fortune() {
                 <li
                   key={cardIndex}
                   className={
-                    'fortune-cards__card' + (card.revealed ? ' revealed' : '')
+                    "fortune-cards__card" + (card.revealed ? " revealed" : "")
                   }
                 >
                   <div className="fortune-cards__card__front">
                     <img
                       src={
-                        'images/tarot/art/' +
-                        (card.image ? card.image : 'sword') +
-                        '.png'
+                        "images/tarot/art/" +
+                        (card.image ? card.image : "sword") +
+                        ".png"
                       }
                       alt="fortune"
                     />
@@ -288,9 +253,9 @@ export default function Fortune() {
                       <img
                         className="card-icon"
                         src={
-                          card.type.includes('Major')
-                            ? 'images/tarot/icon-major.png'
-                            : 'images/tarot/icon-minor.png'
+                          card.type.includes("Major")
+                            ? "images/tarot/icon-major.png"
+                            : "images/tarot/icon-minor.png"
                         }
                         alt="fortune"
                       />
@@ -309,9 +274,9 @@ export default function Fortune() {
                   >
                     <img
                       src={
-                        card.type.includes('Major')
-                          ? 'images/tarot/back-major.png'
-                          : 'images/tarot/back-minor.png'
+                        card.type.includes("Major")
+                          ? "images/tarot/back-major.png"
+                          : "images/tarot/back-minor.png"
                       }
                       alt="fortune"
                     />
@@ -319,9 +284,9 @@ export default function Fortune() {
                       <img
                         className="card-icon"
                         src={
-                          card.type.includes('Major')
-                            ? 'images/tarot/icon-major.png'
-                            : 'images/tarot/icon-minor.png'
+                          card.type.includes("Major")
+                            ? "images/tarot/icon-major.png"
+                            : "images/tarot/icon-minor.png"
                         }
                         alt="fortune"
                       />
@@ -345,9 +310,9 @@ export default function Fortune() {
                 <li key={cardIndex}>
                   <img
                     src={
-                      'images/tarot/art/' +
-                      (card.image ? card.image : 'sword') +
-                      '.png'
+                      "images/tarot/art/" +
+                      (card.image ? card.image : "sword") +
+                      ".png"
                     }
                     alt="fortune"
                   />
@@ -370,7 +335,7 @@ export default function Fortune() {
               disabled={!!reading}
               onClick={async () => {
                 setReading(-1);
-                setDeckMessage('Analyzing your cards...');
+                setDeckMessage("Analyzing your cards...");
                 setTimeout(async () => {
                   const r = await fortuneTeller.performReading();
                   setReading(r);
@@ -393,7 +358,7 @@ export default function Fortune() {
         {reading !== null && reading !== -1 && (
           <section className="fortune-reading">
             <h3>Your reading</h3>
-            {reading.split('\n').map((line, lineIndex) => (
+            {reading.split("\n").map((line, lineIndex) => (
               <p key={lineIndex}>{line}</p>
             ))}
 
@@ -425,29 +390,4 @@ export default function Fortune() {
       </div>
     </>
   );
-}
-
-function formatTime(milliseconds) {
-  // X seconds ( < 1 minute)
-  // X minutes ( < 1 hour)
-  // X hours and Y minutes ( > 1 hour)
-  // about X hours ( > 2 hours)
-
-  const seconds = Math.floor(milliseconds / 1000);
-  const minutes = Math.floor(seconds / 60);
-  const hours = Math.floor(minutes / 60);
-
-  if (seconds < 60) {
-    return seconds + ' seconds';
-  }
-
-  if (minutes < 60) {
-    return minutes + ' minutes';
-  }
-
-  if (hours < 2) {
-    return hours + ' hours and ' + (minutes % 60) + ' minutes';
-  }
-
-  return 'about ' + hours + ' hours';
 }
