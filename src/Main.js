@@ -12,12 +12,12 @@ export const SERVER_URL =
 let isAuthenticated = false;
 
 function Main() {
-  const targetTime = new Date('2023-03-23T19:30:00');
+  const targetTime = new Date('2023-11-23T19:30:00');
   const countdownPatchReleaseFromTime = new Date(
-    '2023-01-01T00:00:00'
+    '2023-07-30T00:00:00'
   ).valueOf();
 
-  const patchReleaseTime = new Date('2023-02-05T00:00:00').valueOf();
+  const patchReleaseTime = new Date('2023-09-01T00:00:00').valueOf();
 
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -152,7 +152,7 @@ function Main() {
       <div className={isLoading ? 'main hidden' : 'main'}>
         {!version2 && (
           <div className="version2-waiting">
-            <span>Spring update is coming soon!</span>
+            <span>Autumn update is coming soon!</span>
             <div className="progress">
               <div
                 style={{
@@ -168,7 +168,7 @@ function Main() {
           <header>
             <h2>Counting Down</h2>
             <p>to our next reunification</p>
-            {(version2 && isAuthenticated && <Fortune />) || (
+            {(isAuthenticated && <Fortune />) || (
               <img className="logo" src="images/logo.png" alt="logo" />
             )}
           </header>
