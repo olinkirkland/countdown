@@ -14,10 +14,10 @@ let isAuthenticated = false;
 function Main() {
   const targetTime = new Date('2023-11-23T19:30:00');
   const countdownPatchReleaseFromTime = new Date(
-    '2023-07-30T00:00:00'
+    '2023-09-01T00:00:00'
   ).valueOf();
 
-  const patchReleaseTime = new Date('2023-09-01T00:00:00').valueOf();
+  const patchReleaseTime = new Date('2023-09-09T00:00:00').valueOf();
 
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
