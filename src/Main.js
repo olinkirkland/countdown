@@ -4,6 +4,7 @@ import Message from './Message';
 import collectionData from './CollectionData.json';
 import toSemanticDate from './semanticDate';
 import Fortune from './Fortune';
+import Madlibs from './Madlibs';
 
 export const SERVER_URL =
   'https://countdown-backend-production.up.railway.app/';
@@ -73,7 +74,7 @@ function Main() {
       // window.location.hostname === 'localhost' ||
       secondsUntilPatchRelease <= 0
     ) {
-      // Show the 20 week update
+      // Show the patch
       setVersion2(true);
     }
   };
@@ -168,9 +169,19 @@ function Main() {
           <header>
             <h2>Counting Down</h2>
             <p>to our next reunification</p>
-            {(isAuthenticated && <Fortune />) || (
-              <img className="logo" src="images/logo.png" alt="logo" />
+
+            {!version2 && (
+              <button className="button" onClick={() => setVersion2(true)}>
+                Version 2
+              </button>
             )}
+
+            <div className="flex-row">
+              {(isAuthenticated && <Fortune />) || (
+                <img className="logo" src="images/logo.png" alt="logo" />
+              )}
+              {isAuthenticated && version2 && <Madlibs />}
+            </div>
           </header>
           <ul className="countdown-group">
             <li className="countdown-item">
