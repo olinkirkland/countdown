@@ -6,9 +6,9 @@ import toSemanticDate from './semanticDate';
 import Fortune from './Fortune';
 import Madlibs from './Madlibs';
 
-export const SERVER_URL =
-  'https://countdown-backend-production.up.railway.app/';
-// export const SERVER_URL = 'http://127.0.0.1:3001/';
+// export const SERVER_URL =
+//   'https://countdown-backend-production.up.railway.app/';
+export const SERVER_URL = 'http://127.0.0.1:3001/';
 
 let isAuthenticated = false;
 
@@ -18,7 +18,7 @@ function Main() {
     '2023-09-01T00:00:00'
   ).valueOf();
 
-  const patchReleaseTime = new Date('2023-09-09T00:00:00').valueOf();
+  const patchReleaseTime = new Date('2023-09-18T00:00:00').valueOf();
 
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -170,11 +170,11 @@ function Main() {
             <h2>Counting Down</h2>
             <p>to our next reunification</p>
 
-            {!version2 && (
+            {/* {!version2 && (
               <button className="button" onClick={() => setVersion2(true)}>
                 Version 2
               </button>
-            )}
+            )} */}
 
             <div className="flex-row">
               {(isAuthenticated && <Fortune />) || (

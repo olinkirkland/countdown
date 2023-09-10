@@ -23,6 +23,7 @@ button.fortune-button {
   height: 100vh;
   height: 100%;
   top: 0;
+  left: 0;
   padding: 2rem;
   position: fixed;
   overflow: auto;
@@ -44,7 +45,7 @@ button.fortune-button {
   }
 }
 
-.popup.fortune {
+.popup.fortune, .popup.madlibs {
   * {
     list-style: none;
   }
