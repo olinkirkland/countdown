@@ -6,9 +6,9 @@ import toSemanticDate from './semanticDate';
 import Fortune from './Fortune';
 import Madlibs from './Madlibs';
 
-// export const SERVER_URL =
-//   'https://countdown-backend-production.up.railway.app/';
-export const SERVER_URL = 'http://127.0.0.1:3001/';
+export const SERVER_URL =
+  'https://countdown-backend-production.up.railway.app/';
+// export const SERVER_URL = 'http://127.0.0.1:3001/';
 
 let isAuthenticated = false;
 
