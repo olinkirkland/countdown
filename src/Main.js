@@ -71,12 +71,15 @@ function Main() {
     );
 
     if (
-      // window.location.hostname === 'localhost' ||
+      window.location.hostname === 'localhost' ||
       secondsUntilPatchRelease <= 0
     ) {
       // Show the patch
       setVersion2(true);
     }
+
+    // Time
+    updateTime();
   };
 
   useEffect(() => {
@@ -90,7 +93,7 @@ function Main() {
     setPercentUntilUpdate(percent);
 
     if (secondsUntilPatchRelease <= 0) {
-      setVersion2(true);
+      // setVersion2(true);
     }
   }, [
     countdownPatchReleaseFromTime,
@@ -119,6 +122,42 @@ function Main() {
       });
     });
   }
+
+  const [houstonDay, setHoustonDay] = useState('');
+  const [cologneDay, setCologneDay] = useState('');
+  const [houstonTime, setHoustonTime] = useState('');
+  const [cologneTime, setCologneTime] = useState('');
+
+  const updateTime = () => {
+    const houstonTime = new Date()
+      .toLocaleTimeString('en-US', {
+        timeZone: 'America/Chicago',
+        hour12: false
+      })
+      .slice(0, -3);
+
+    const cologneTime = new Date()
+      .toLocaleTimeString('en-US', {
+        timeZone: 'Europe/Berlin',
+        hour12: false
+      })
+      .slice(0, -3);
+
+    const weekdayInHouston = new Date().toLocaleDateString('en-US', {
+      timeZone: 'America/Chicago',
+      weekday: 'long'
+    });
+
+    const weekdayInCologne = new Date().toLocaleDateString('en-US', {
+      timeZone: 'Europe/Berlin',
+      weekday: 'long'
+    });
+
+    setHoustonDay(weekdayInHouston);
+    setCologneDay(weekdayInCologne);
+    setHoustonTime(houstonTime);
+    setCologneTime(cologneTime);
+  };
 
   useEffect(() => {
     if (!isLoading) {
@@ -205,6 +244,27 @@ function Main() {
               <div className="countdown-item-label">Seconds</div>
             </li>
           </ul>
+
+          <div className="time-zones">
+            <div className="time-zone">
+              <img src="images/us.png" alt="us" />
+              <p>{houstonDay}</p>
+              <p>
+                <i className="far fa-clock"></i>
+                {houstonTime}
+              </p>
+            </div>
+
+            <div className="time-zone">
+              <img src="images/de.png" alt="de" />
+              <p>{cologneDay}</p>
+              <p>
+                <i className="far fa-clock"></i>
+                {cologneTime}
+              </p>
+            </div>
+          </div>
+
           <span className="flex-row celebrate">
             Can't wait to see you on {toSemanticDate(targetTime)}!
           </span>

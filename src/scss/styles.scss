@@ -175,3 +175,19 @@ body {
     transform: scale(1.2);
   }
 }
+
+.time-zones {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  > .time-zone {
+    padding: 1.2rem;
+    color: $primary-light;
+    text-align: center;
+    font-weight: bold;
+
+    i {
+      margin-right: 0.4rem;
+    }
+  }
+}
