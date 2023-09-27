@@ -189,8 +189,8 @@ function Main() {
           <span>Connecting...</span>
         </div>
       )}
-      <div className={false && isLoading ? 'main hidden' : 'main'}>
-        {!version2 && (
+      <div className={isLoading ? 'main hidden' : 'main'}>
+        {false && !version2 && (
           <div className="version2-waiting">
             <span>Autumn update is coming soon!</span>
             <div className="progress">
