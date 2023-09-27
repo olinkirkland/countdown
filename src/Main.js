@@ -71,7 +71,7 @@ function Main() {
     );
 
     if (
-      window.location.hostname === 'localhost' ||
+      // window.location.hostname === 'localhost' ||
       secondsUntilPatchRelease <= 0
     ) {
       // Show the patch
@@ -93,7 +93,7 @@ function Main() {
     setPercentUntilUpdate(percent);
 
     if (secondsUntilPatchRelease <= 0) {
-      // setVersion2(true);
+      setVersion2(true);
     }
   }, [
     countdownPatchReleaseFromTime,
