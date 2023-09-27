@@ -219,7 +219,7 @@ function Main() {
               {(isAuthenticated && <Fortune />) || (
                 <img className="logo" src="images/logo.png" alt="logo" />
               )}
-              {isAuthenticated && version2 && <Madlibs />}
+              {false && isAuthenticated && version2 && <Madlibs />}
             </div>
           </header>
           <ul className="countdown-group">
