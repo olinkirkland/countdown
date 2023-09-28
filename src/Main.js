@@ -292,22 +292,22 @@ function Main() {
             <div className="time-zones">
               <div className="time-zone">
                 <img src="images/us.png" alt="us" />
-                <p className="activity">{amberActivity}</p>
                 <p>{houstonDay}</p>
                 <p>
                   <i className="far fa-clock"></i>
                   {houstonTime}
                 </p>
+                <p className="activity">{amberActivity}</p>
               </div>
 
               <div className="time-zone">
                 <img src="images/de.png" alt="de" />
-                <p className="activity">{olinActivity}</p>
                 <p>{cologneDay}</p>
                 <p>
                   <i className="far fa-clock"></i>
                   {cologneTime}
                 </p>
+                <p className="activity">{olinActivity}</p>
               </div>
             </div>
           )}
