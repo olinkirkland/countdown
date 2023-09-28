@@ -288,27 +288,29 @@ function Main() {
             </li>
           </ul>
 
-          <div className="time-zones">
-            <div className="time-zone">
-              <img src="images/us.png" alt="us" />
-              <p className="activity">{amberActivity}</p>
-              <p>{houstonDay}</p>
-              <p>
-                <i className="far fa-clock"></i>
-                {houstonTime}
-              </p>
-            </div>
+          {isAuthenticated && (
+            <div className="time-zones">
+              <div className="time-zone">
+                <img src="images/us.png" alt="us" />
+                <p className="activity">{amberActivity}</p>
+                <p>{houstonDay}</p>
+                <p>
+                  <i className="far fa-clock"></i>
+                  {houstonTime}
+                </p>
+              </div>
 
-            <div className="time-zone">
-              <img src="images/de.png" alt="de" />
-              <p className="activity">{olinActivity}</p>
-              <p>{cologneDay}</p>
-              <p>
-                <i className="far fa-clock"></i>
-                {cologneTime}
-              </p>
+              <div className="time-zone">
+                <img src="images/de.png" alt="de" />
+                <p className="activity">{olinActivity}</p>
+                <p>{cologneDay}</p>
+                <p>
+                  <i className="far fa-clock"></i>
+                  {cologneTime}
+                </p>
+              </div>
             </div>
-          </div>
+          )}
 
           <span className="flex-row celebrate">
             Can't wait to see you on {toSemanticDate(targetTime)}!
