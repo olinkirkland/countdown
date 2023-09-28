@@ -1,10 +1,11 @@
+import activities from './data/activities.json';
 import { useEffect, useState } from 'react';
 import Collection from './Collection';
-import Message from './Message';
 import collectionData from './CollectionData.json';
-import toSemanticDate from './semanticDate';
 import Fortune from './Fortune';
 import Madlibs from './Madlibs';
+import Message from './Message';
+import toSemanticDate from './semanticDate';
 
 export const SERVER_URL =
   'https://countdown-backend-production.up.railway.app/';
@@ -127,6 +128,8 @@ function Main() {
   const [cologneDay, setCologneDay] = useState('');
   const [houstonTime, setHoustonTime] = useState('');
   const [cologneTime, setCologneTime] = useState('');
+  const [olinActivity, setOlinActivity] = useState('');
+  const [amberActivity, setAmberActivity] = useState('');
 
   const updateTime = () => {
     const houstonTime = new Date()
@@ -157,7 +160,40 @@ function Main() {
     setCologneDay(weekdayInCologne);
     setHoustonTime(houstonTime);
     setCologneTime(cologneTime);
+
+    setOlinActivity(
+      'Olin is ' +
+        getActivityFrom(olinsActivities, weekdayInCologne, cologneTime)
+    );
+    setAmberActivity(
+      'Amber is ' +
+        getActivityFrom(ambersActivities, weekdayInHouston, houstonTime)
+    );
   };
+
+  const olinsActivities = activities.olin;
+  const ambersActivities = activities.amber;
+
+  function getActivityFrom(activity, day, time) {
+    // Filter activities that match the current day
+    const matchingActivities = activity.filter((item) =>
+      item.days.includes(day)
+    );
+
+    // Filter matchingActivities based on the current time
+    const currentActivity = matchingActivities.find((item) => {
+      const startTime = item.time[0];
+      const endTime = item.time[1];
+      return startTime <= time && time <= endTime;
+    });
+
+    // Check if a matching activity was found
+    if (currentActivity) {
+      return currentActivity;
+    } else {
+      return 'probably not doing anything.';
+    }
+  }
 
   useEffect(() => {
     if (!isLoading) {
@@ -248,6 +284,7 @@ function Main() {
           <div className="time-zones">
             <div className="time-zone">
               <img src="images/us.png" alt="us" />
+              <p className="activity">{amberActivity}</p>
               <p>{houstonDay}</p>
               <p>
                 <i className="far fa-clock"></i>
@@ -257,6 +294,7 @@ function Main() {
 
             <div className="time-zone">
               <img src="images/de.png" alt="de" />
+              <p className="activity">{olinActivity}</p>
               <p>{cologneDay}</p>
               <p>
                 <i className="far fa-clock"></i>

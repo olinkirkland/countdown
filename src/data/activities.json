@@ -1,0 +1,25 @@
+{
+  "olin": [
+    {
+      "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "time": ["7:15", "8:45"],
+      "location": "commuting"
+    },
+    {
+      "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "time": ["8:45", "17:15"],
+      "location": "working"
+    },
+    {
+      "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "time": ["17:15", "18:45"],
+      "location": "commuting"
+    },
+    {
+      "days": ["Monday"],
+      "time": ["19:00", "23:30"],
+      "location": "at D&D"
+    }
+  ],
+  "amber": []
+}
