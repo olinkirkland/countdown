@@ -3,23 +3,74 @@
     {
       "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
       "time": ["7:15", "8:45"],
-      "location": "commuting"
+      "activity": "commuting to work."
     },
     {
       "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
       "time": ["8:45", "17:15"],
-      "location": "working"
+      "activity": "at work."
     },
     {
       "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
       "time": ["17:15", "18:45"],
-      "location": "commuting"
+      "activity": "commuting."
     },
     {
       "days": ["Monday"],
       "time": ["19:00", "23:30"],
-      "location": "at D&D"
+      "activity": "at D&D."
+    },
+    {
+      "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "time": ["23:00", "6:00"],
+      "activity": "probably sleeping."
     }
   ],
-  "amber": []
+  "amber": [
+    {
+      "days": ["Monday", "Wednesday", "Friday"],
+      "time": ["11:00", "12:00"],
+      "activity": "in Statistics class."
+    },
+    {
+      "days": ["Monday", "Wednesday"],
+      "time": ["14:30", "15:30"],
+      "activity": "in Environmental Data Analysis class."
+    },
+    {
+      "days": ["Monday", "Wednesday"],
+      "time": ["16:00", "17:20"],
+      "activity": "in Environmental Data Analysis lab. 🔬"
+    },
+    {
+      "days": ["Tuesday", "Thursday"],
+      "time": ["10:00", "11:30"],
+      "activity": "in Mineralogy lab."
+    },
+    {
+      "days": ["Tuesday", "Thursday"],
+      "time": ["11:30", "13:00"],
+      "activity": "in Hydrogeology class."
+    },
+    {
+      "days": ["Tuesday", "Thursday"],
+      "time": ["13:00", "14:00"],
+      "activity": "in Mineralogy lecture."
+    },
+    {
+      "days": ["Tuesday", "Thursday"],
+      "time": ["14:30", "15:30"],
+      "activity": "in Soils lecture."
+    },
+    {
+      "days": ["Tuesday", "Thursday"],
+      "time": ["17:30", "19:00"],
+      "activity": "in Soils lab."
+    },
+    {
+      "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "time": ["23:00", "6:00"],
+      "activity": "probably sleeping."
+    }
+  ]
 }

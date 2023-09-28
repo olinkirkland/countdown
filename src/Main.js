@@ -132,14 +132,16 @@ function Main() {
   const [amberActivity, setAmberActivity] = useState('');
 
   const updateTime = () => {
-    const houstonTime = new Date()
+    const d = new Date();
+
+    const houstonTime = d
       .toLocaleTimeString('en-US', {
         timeZone: 'America/Chicago',
         hour12: false
       })
       .slice(0, -3);
 
-    const cologneTime = new Date()
+    const cologneTime = d
       .toLocaleTimeString('en-US', {
         timeZone: 'Europe/Berlin',
         hour12: false
@@ -174,25 +176,30 @@ function Main() {
   const olinsActivities = activities.olin;
   const ambersActivities = activities.amber;
 
-  function getActivityFrom(activity, day, time) {
-    // Filter activities that match the current day
-    const matchingActivities = activity.filter((item) =>
-      item.days.includes(day)
-    );
-
-    // Filter matchingActivities based on the current time
-    const currentActivity = matchingActivities.find((item) => {
-      const startTime = item.time[0];
-      const endTime = item.time[1];
-      return startTime <= time && time <= endTime;
+  function getActivityFrom(activities, day, time) {
+    const todaysActivities = activities.filter((item) => {
+      return item.days.includes(day);
     });
 
-    // Check if a matching activity was found
-    if (currentActivity) {
-      return currentActivity;
-    } else {
-      return 'probably not doing anything.';
+    let currentActivity = null;
+    todaysActivities.forEach((item) => {
+      if (compareTimes(item.time[0], time) && compareTimes(time, item.time[1]))
+        currentActivity = item.activity;
+    });
+
+    return currentActivity || 'probably not doing anything.';
+  }
+
+  // Returns true if a is before b
+  function compareTimes(a, b) {
+    const [aHour, aMinute] = a.split(':').map((item) => parseInt(item));
+    const [bHour, bMinute] = b.split(':').map((item) => parseInt(item));
+
+    console.log(`${aHour}:${aMinute} < ${bHour}:${bMinute}?`);
+    if (aHour === bHour) {
+      return aMinute < bMinute;
     }
+    return aHour < bHour;
   }
 
   useEffect(() => {
