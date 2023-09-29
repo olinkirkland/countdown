@@ -13,17 +13,38 @@
     {
       "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
       "time": ["17:15", "18:45"],
-      "activity": "commuting."
+      "activity": "commuting home."
     },
     {
       "days": ["Monday"],
       "time": ["19:00", "23:30"],
-      "activity": "at D&D."
+      "activity": "at D&D. 🎲"
     },
     {
-      "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      "time": ["23:00", "6:00"],
-      "activity": "probably sleeping."
+      "days": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "time": ["23:00", "00:00"],
+      "activity": "probably sleeping. 😴"
+    },
+    {
+      "days": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "time": ["00:00", "6:00"],
+      "activity": "probably sleeping. 😴"
     }
   ],
   "amber": [
@@ -45,7 +66,7 @@
     {
       "days": ["Tuesday", "Thursday"],
       "time": ["10:00", "11:30"],
-      "activity": "in Mineralogy lab."
+      "activity": "in Mineralogy lab. 🔬"
     },
     {
       "days": ["Tuesday", "Thursday"],
@@ -65,12 +86,33 @@
     {
       "days": ["Tuesday", "Thursday"],
       "time": ["17:30", "19:00"],
-      "activity": "in Soils lab."
+      "activity": "in Soils lab. 🔬"
     },
     {
-      "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      "time": ["23:00", "6:00"],
-      "activity": "probably sleeping."
+      "days": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "time": ["23:00", "00:00"],
+      "activity": "probably sleeping. 😴"
+    },
+    {
+      "days": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "time": ["00:00", "6:00"],
+      "activity": "probably sleeping. 😴"
     }
   ]
 }
