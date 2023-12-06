@@ -344,6 +344,7 @@ function Main() {
               {showCollection ? 'Hide' : 'Show'}
               <i className="fas fa-heart" />
               Notes
+              <span className="muted">(2022)</span>
             </button>
             {showCollection && (
               <Collection
