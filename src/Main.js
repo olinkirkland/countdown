@@ -187,7 +187,7 @@ function Main() {
         currentActivity = item.activity;
     });
 
-    return currentActivity || 'not busy';
+    return currentActivity || 'probably not busy.';
   }
 
   // Returns true if a is before b
