@@ -14,7 +14,7 @@ export const SERVER_URL =
 let isAuthenticated = false;
 
 function Main() {
-  const targetTime = new Date('2023-11-11T19:30:00');
+  const targetTime = new Date('2023-12-14T10:30:00');
   const countdownPatchReleaseFromTime = new Date(
     '2023-09-01T00:00:00'
   ).valueOf();
@@ -344,6 +344,7 @@ function Main() {
               {showCollection ? 'Hide' : 'Show'}
               <i className="fas fa-heart" />
               Notes
+              <span className="muted">(2022)</span>
             </button>
             {showCollection && (
               <Collection
