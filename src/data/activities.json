@@ -49,44 +49,54 @@
   ],
   "amber": [
     {
-      "days": ["Monday", "Wednesday", "Friday"],
-      "time": ["11:00", "12:00"],
-      "activity": "in Statistics class."
+      "days": ["Monday", "Wednesday"],
+      "time": ["11:30", "12:50"],
+      "activity": "in Field Methods lab. 🔬"
     },
     {
       "days": ["Monday", "Wednesday"],
-      "time": ["14:30", "15:30"],
-      "activity": "in Environmental Data Analysis class."
+      "time": ["13:00", "13:50"],
+      "activity": "in Field Methods lecture."
     },
     {
       "days": ["Monday", "Wednesday"],
-      "time": ["16:00", "17:20"],
-      "activity": "in Environmental Data Analysis lab. 🔬"
+      "time": ["14:30", "15:50"],
+      "activity": "in Geospatial Analysis lab. 🌎"
+    },
+    {
+      "days": ["Monday", "Wednesday"],
+      "time": ["16:00", "17:00"],
+      "activity": "in Geospatial Analysis lecture."
     },
     {
       "days": ["Tuesday", "Thursday"],
-      "time": ["10:00", "11:30"],
-      "activity": "in Mineralogy lab. 🔬"
+      "time": ["8:30","9:50"],
+      "activity": "in Historical Geology lecture."
     },
     {
       "days": ["Tuesday", "Thursday"],
-      "time": ["11:30", "13:00"],
-      "activity": "in Hydrogeology class."
+      "time": ["10:00","11:20"],
+      "activity": "in Historical Geology lab."
     },
     {
       "days": ["Tuesday", "Thursday"],
-      "time": ["13:00", "14:00"],
-      "activity": "in Mineralogy lecture."
+      "time": ["11:30","12:50"],
+      "activity": "in Geochemical Reaction Modeling class. 🌋"
     },
     {
       "days": ["Tuesday", "Thursday"],
-      "time": ["14:30", "15:30"],
-      "activity": "in Soils lecture."
+      "time": ["13:00","14:20"],
+      "activity": "in Physical Meteorology class. 🌦️"
     },
     {
       "days": ["Tuesday", "Thursday"],
-      "time": ["17:30", "19:00"],
-      "activity": "in Soils lab. 🔬"
+      "time": ["14:30","15:20"],
+      "activity": "in Deep Learning for Big Data class."
+    },
+    {
+      "days": ["Tuesday", "Thursday"],
+      "time": ["16:00","17:20"],
+      "activity": "in Deep Learning for Big Data lab. 🤖"
     },
     {
       "days": [
