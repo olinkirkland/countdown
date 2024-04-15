@@ -312,7 +312,7 @@ function Main() {
             </div>
           )}
 
-          <span className="flex-row celebrate">
+          <span className="celebrate">
             Can't wait to see you on{' '}
             <strong>{toSemanticDate(targetTime)}</strong>!{' '}
           </span>
