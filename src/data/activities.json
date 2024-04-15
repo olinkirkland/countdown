@@ -2,22 +2,22 @@
   "olin": [
     {
       "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      "time": ["7:15", "8:45"],
+      "time": ["7:40", "7:55"],
       "activity": "commuting to work."
     },
     {
       "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      "time": ["8:45", "17:15"],
+      "time": ["7:55", "17:15"],
       "activity": "at work."
     },
     {
       "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      "time": ["17:15", "18:45"],
+      "time": ["17:05", "17:15"],
       "activity": "commuting home."
     },
     {
       "days": ["Monday"],
-      "time": ["19:00", "23:30"],
+      "time": ["17:15", "23:30"],
       "activity": "at D&D. 🎲"
     },
     {
