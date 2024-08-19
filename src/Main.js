@@ -313,7 +313,7 @@ function Main() {
           )}
 
           <span className="celebrate">
-          🎓 Can't wait to see you graduate on{' '}
+            🎓 Can't wait to see you graduate on{' '}
             <strong>{toSemanticDate(targetTime)}</strong>!{' '}
           </span>
         </div>
