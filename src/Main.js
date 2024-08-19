@@ -14,7 +14,7 @@ export const SERVER_URL =
 let isAuthenticated = false;
 
 function Main() {
-  const targetTime = new Date('2024-07-05T07:30:00');
+  const targetTime = new Date('2024-12-13T07:30:00');
   const countdownPatchReleaseFromTime = new Date(
     '2023-09-01T00:00:00'
   ).valueOf();
@@ -313,7 +313,7 @@ function Main() {
           )}
 
           <span className="celebrate">
-            Can't wait to see you on{' '}
+          🎓 Can't wait to see you graduate on{' '}
             <strong>{toSemanticDate(targetTime)}</strong>!{' '}
           </span>
         </div>

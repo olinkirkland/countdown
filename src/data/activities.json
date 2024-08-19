@@ -50,13 +50,28 @@
   "amber": [
     {
       "days": ["Monday", "Wednesday"],
-      "time": ["10:00", "12:00"],
-      "activity": "in Global Climate Change lecture. 👩‍💻"
+      "time": ["9:00", "10:00"],
+      "activity": "in Aerosols & Climate lecture. 🌫️"
     },
     {
       "days": ["Monday", "Wednesday"],
-      "time": ["12:00", "14:00"],
-      "activity": "in Global Climate Change lab. 🌎"
+      "time": ["10:00", "11:30"],
+      "activity": "in Aerosols & Climate lab. 🧪"
+    },
+    {
+      "days": ["Monday", "Wednesday"],
+      "time": ["13:00", "14:30"],
+      "activity": "in Engineering Mathematics. 🧮"
+    },
+    {
+      "days": ["Tuesday", "Thursday"],
+      "time": ["10:00", "11:30"],
+      "activity": "in Principles of Atmospheric Science. 🌤️"
+    },
+    {
+      "days": ["Tuesday", "Thursday"],
+      "time": ["11:30", "13:00"],
+      "activity": "in Environmental Geochemistry. 🌍"
     },
     {
       "days": [
